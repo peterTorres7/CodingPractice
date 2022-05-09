@@ -10,7 +10,6 @@ public class IsUnique {
     // Space = O(1)
     // isUnique using brute force
     public static boolean isUniqueBruteForce(String str) {
-
         // create out loop of str with 2 less than length
         for (int i = 0; i < str.length() - 1; i++) {
             // create inner loop of str starting at i + 1
@@ -28,7 +27,6 @@ public class IsUnique {
     // Time: O(n log(n))                                                                                                 
     // isUnique using sort
     public static boolean isUniqueSort(String str) {
-        
         //initialize a char array using str
         char[] characters = str.toCharArray(); 
         // sort char array
@@ -44,7 +42,7 @@ public class IsUnique {
         //return true after loop since it's unique
         return true;
     };
-                                                                                                                                 
+      
     // Time = O(n)
     // Space = O(1)                                                    
     // isUnique using boolean array
