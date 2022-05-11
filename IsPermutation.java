@@ -66,10 +66,39 @@ public class IsPermutation {
 
         // return if sortedStr1 is equal to sortedStr2
         return sortedStr1.equals(sortedStr2);
-    }
+    };
+                                                            
+    // isPermutation using char array
+    public static boolean isPermutationCharArray(String str1, String str2) {
+        // if lengths are different return false
+        if (str1.length() != str2.length()) { return false; }
+        // if either is null return false
+        if (str1 == null | str2 == null) { return false; }
+
+        // initialize int array to hold all ascii char counts
+        int[] charCount = new int[128];
+
+        // loop through str1
+        for (int i = 0; i < str1.length(); i++) {
+            // increase count by one in char array for each char
+            charCount[str1.charAt(i)]++;
+        }
+
+        // loop through str2
+        for (int i =0; i < str2.length(); i++) {
+            // decrease count by one in char array for each char
+            charCount[str2.charAt(i)]--;
+            // if char count is less than 0 return false
+            if (charCount[str2.charAt(i)] < 0) {
+                return false;
+            }
+        }
+        // return true after loops since it's a permutation
+        return true;
+    };
 
     // main method
     public static void main(String[] args) {
-        System.out.println(isPermutationSort("words", "sword"));
+        System.out.println(isPermutationCharArray("words", "sword"));
     }
 }
