@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 /**
  * This class checks to see if given two String, is one String a 
@@ -23,7 +24,7 @@ public class IsPermutation {
         int str1Index = 0;
         // while str1Index is less than str1 length
         while (str1Index < str1.length()) {
-            // if str2 contains str1 char at str1Index
+            // if str2StringBuilder contains str1 char at str1Index
             char str1Char = str1.charAt(str1Index); 
             if (str2StringBuilder.toString().contains(Character.toString(str1Char))) {
                 // str2 stringbuilder remove char at index of char
@@ -37,10 +38,38 @@ public class IsPermutation {
         }
         // return true since it is a permutation
         return true;
+    };                                                                                      
+
+    // Time: O(n log(n))
+    // isPermutaion using sort
+    public static boolean isPermutationSort(String str1, String str2) {
+        // if str1 length is not equal to str2 length return false
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        // if str1 or str2 is null return false
+        if (str1 == null | str2 == null) {
+            return false;
+        }
+        
+        // turn str1 and str2 into char arrays
+        char[] charStr1 = str1.toCharArray();
+        char[] charStr2 = str2.toCharArray();
+        
+        // sort both char arrays
+        Arrays.sort(charStr1);
+        Arrays.sort(charStr2);
+
+        // initialize new String of now sorted char arrays
+        String sortedStr1 = new String(charStr1);
+        String sortedStr2 = new String(charStr2);
+
+        // return if sortedStr1 is equal to sortedStr2
+        return sortedStr1.equals(sortedStr2);
     }
 
     // main method
     public static void main(String[] args) {
-        System.out.println(isPermutationBruteForce("words", "sword"));
+        System.out.println(isPermutationSort("words", "sword"));
     }
 }
