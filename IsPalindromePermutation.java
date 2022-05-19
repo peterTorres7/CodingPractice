@@ -18,7 +18,7 @@ public class IsPalindromePermutation {
             // in char array at char value index increase by 1
             charCount[charValue]++; 
         }
-            System.out.println(Arrays.toString(charCount));
+
         // initialize boolean to hold if odd seen to false
         boolean oddCountSeen = false;
         // loop through charCountsArray
