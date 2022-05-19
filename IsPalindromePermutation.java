@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * This class checks to see if given string is a permutation of a palindrome."
  */
