@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 /**
- * This class checks to see if given two String, is one String a 
+ * This class checks to see if given two Strings, is one String a 
  * permutation of the other String.
  */
 
