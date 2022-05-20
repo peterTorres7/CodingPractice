@@ -3,13 +3,7 @@
  * one edit (replace, instert, remove) away from the other String.
  */
 
-public class IsOneAway {
-    
-    //                                      
-    // "ple", "pele" -> false                                     
-    //  i                                    
-    //                                      
-    //                                      
+public class IsOneAway {                                   
 
     // isOneAway using helper methods
     public static boolean isOneAway(String str1, String str2) {
@@ -53,12 +47,35 @@ public class IsOneAway {
                 seenDifference = true;
             }
         }
-        // return true after loop since only one difference
+        // return true after loop since only one difference seen
+        return true;
+    }
+
+    //  i                                   
+    // "ple", "pele" -> false                                     
+    //         i                             
+    //          t                           
+    //   e=l
+
+    // oneEditInsertRemove helper method
+    public static boolean oneEditInsertRemove(String str1, String str2) {
+        // loop through str1
+        for (int i = 0 ; i < str1.length(); i++) {
+            // if str1 char at current index is not equal to str2 char at current index
+            if (str1.charAt(i) != str2.charAt(i)) {
+                // if str1 char at current index is not equal to str2 char at current index plus one
+                if (str1.charAt(i) != str2.charAt(i + 1)) {
+                    // return false
+                    return false;
+                }
+            }
+        }
+        // return true after loop since only one difference seen 
         return true;
     }
 
     // main method
     public static void main(String[] args) {
-        System.out.println(isOneAway("pele", "pali"));
+        System.out.println(isOneAway("pele", "ple"));
     }
 }
