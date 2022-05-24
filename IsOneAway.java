@@ -6,76 +6,72 @@
 public class IsOneAway {                                   
 
     // isOneAway using helper methods
-    public static boolean isOneAway(String str1, String str2) {
-        // if lenghts are equal 
+    public static boolean isOneAwayHelperMethods (String str1, String str2) {
+
+        // if str1 length is equal to str2 length
         if (str1.length() == str2.length()) {
-            // return oneEditReplace method
-            return (oneEditReplace(str1, str2));
+            return isOneReplaceAway(str1, str2);
         }
 
-        // if str1 length plus 1 is equal to str2 length
+        // if str1 length is one less than str2 length
         if (str1.length() + 1 == str2.length()) {
-            // return oneEditInsertRemove with str1 as first parameter since it's a shorter string
-            return oneEditInsertRemove(str1, str2);
+            return isOneInsertRemoveAway(str1, str2);
         }
 
-        // if str2 length plus 1 is equal to str1 length
+        // if str2 length is one less than str1 length
         if (str2.length() + 1 == str1.length()) {
-            // return oneEditInsertRemove with str2 as first parameter since it's a shorter string
-            return oneEditInsertRemove(str2, str1);
+            return isOneInsertRemoveAway(str2, str1);
         }
 
-        // return false since diffence in lengths is bigger than one so it means more than one edit
         return false;
 
-    } 
+    }
 
-    // oneEditReplace helper method
-    public static boolean oneEditReplace(String str1, String str2) {
-        // initialize seenDifference to false
-        boolean seenDifference = false;
+    // isOneReplaceAway since both string are equal length
+    public static boolean isOneReplaceAway(String str1, String str2) {
+        // initialze differenceSeen to false
+        boolean diffenceSeen = false;
         // loop through str1
         for (int i = 0; i < str1.length(); i++) {
-            // if str1 char at current index is not equal to str2 char at current index
+            // if str1 char at current index is not equal to str2 char at current index 
             if (str1.charAt(i) != str2.charAt(i)) {
-                // if seenDifference is true
-                if (seenDifference) {
-                    // return false
-                    return false;
+                // if differenceSeen is true return false since more than one difference
+                if (diffenceSeen) { 
+                    return false; 
                 }
-                // set seenDifference to true
-                seenDifference = true;
+                // set diffenceSeen to true
+                diffenceSeen = true;
             }
         }
-        // return true after loop since only one difference seen
+        // after loop return true since only one replace away
         return true;
     }
 
-    //  i                                   
-    // "ple", "pele" -> false                                     
-    //         i                             
-    //          t                           
-    //   e=l
-
-    // oneEditInsertRemove helper method
-    public static boolean oneEditInsertRemove(String str1, String str2) {
+    // isOneInserRemoveAway using shorter string as first parameter
+    public static boolean isOneInsertRemoveAway(String str1, String str2) {
         // loop through str1
-        for (int i = 0 ; i < str1.length(); i++) {
-            // if str1 char at current index is not equal to str2 char at current index
+        for (int i = 0; i < str1.length(); i++) {
+            // if str1 char at current index is not equal to str2 at current index
             if (str1.charAt(i) != str2.charAt(i)) {
-                // if str1 char at current index is not equal to str2 char at current index plus one
+                // if str1 char at current index is not equal to str2 at current index plus 1
                 if (str1.charAt(i) != str2.charAt(i + 1)) {
                     // return false
                     return false;
                 }
             }
         }
-        // return true after loop since only one difference seen 
+        // return true after loop since only one insert/remove away 
         return true;
     }
 
     // main method
     public static void main(String[] args) {
-        System.out.println(isOneAway("pele", "ple"));
+        System.out.println(isOneAwayHelperMethods("ple", "pale"));
     }
 }
+
+    //    i                                   
+    // "ple", "pele" -> false                                     
+    //           i                             
+    //          f                           
+    //  
