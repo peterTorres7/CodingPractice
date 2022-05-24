@@ -66,12 +66,7 @@ public class IsOneAway {
 
     // main method
     public static void main(String[] args) {
-        System.out.println(isOneAwayHelperMethods("ple", "pale"));
+        System.out.println(isOneAwayHelperMethods("palp", "palo"));
     }
 }
-
-    //    i                                   
-    // "ple", "pele" -> false                                     
-    //           i                             
-    //          f                           
-    //  
+                      
