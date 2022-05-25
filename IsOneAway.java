@@ -5,6 +5,7 @@
 
 public class IsOneAway {                                   
 
+    // Time: O(n)
     // isOneAway using helper methods
     public static boolean isOneAwayHelperMethods (String str1, String str2) {
 
@@ -47,7 +48,7 @@ public class IsOneAway {
         return true;
     }
 
-    // isOneInserRemoveAway using shorter string as first parameter
+    // isOneInsertRemoveAway using shorter string as first parameter
     public static boolean isOneInsertRemoveAway(String str1, String str2) {
         // loop through str1
         for (int i = 0; i < str1.length(); i++) {
@@ -64,9 +65,37 @@ public class IsOneAway {
         return true;
     }
 
+    // isOneInsertRemoveAway using indexes and while loop
+    public static boolean isOneInsertRemoveAwayIndexes(String str1, String str2) {
+        // initialize str1 index to 0
+        int str1Index = 0;
+        // initialize str2 index to 0
+        int str2Index = 0;
+        // while str1Index is less than str1 length
+        while (str1Index < str1.length() && str2Index < str2.length()) {
+            // if str1 char at str1Index is not equal to str2 char at str2Index
+            if (str1.charAt(str1Index) != str2.charAt(str2Index)) {
+                // if str1Index is not equal to str2Index return false
+                if (str1Index != str2Index) {
+                    return false;
+                }
+                // increase str2Index
+                str2Index++;
+            // else
+            } else {
+                // increase str1Index
+                str1Index++;
+                // increase str2Index
+                str2Index++;
+            }
+        }
+        // return true after loop since only one insert/remove away
+        return true;
+    }
+
     // main method
     public static void main(String[] args) {
-        System.out.println(isOneAwayHelperMethods("palp", "palo"));
+        System.out.println(isOneAwayHelperMethods("plp", "palp"));
     }
 }
-                      
+                                                 
