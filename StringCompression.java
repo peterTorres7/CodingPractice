@@ -2,6 +2,7 @@
  * This class performs a basic string compression using
  * the counts of repeated chacters.
  */
+
 public class StringCompression {                             
 
     // Time: O(n^2)
