@@ -6,7 +6,7 @@
 public class StringCompression {                             
 
     // Time: O(n^2)
-    // string compression using String as storage
+    // stringCompression using String as storage
     public static String stringCompressionString (String str) {
         // initialize compressedString to empty string
         String compressedString = "";
