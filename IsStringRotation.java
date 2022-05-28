@@ -1,6 +1,6 @@
 /**
  * This class checks to see if given two Strings, is one String 
- * a rotation of the other String.
+ * a rotation of the other String using assumed given isSubstring method.
  */
 
 public class IsStringRotation {                         
