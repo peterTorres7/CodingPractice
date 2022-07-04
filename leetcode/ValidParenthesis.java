@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+/**
+ * This class checks to see if given parenthesis are in valid sequence.
+ */
+
 public class ValidParenthesis {
 
     // Time: O(n)
