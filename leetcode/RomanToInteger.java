@@ -27,7 +27,7 @@ public class RomanToInteger {
 
         // initialize int result to 0
         int result = 0;
-        // loop through str length - 1
+        // loop through str length
         for (int i = 0; i < str.length(); i++) {
             // if map get value of str at current char is less than map get value of str at current char plus 1
             if (i + 1 < str.length() && romanToIntegerMap.get(str.charAt(i)) < romanToIntegerMap.get(str.charAt(i + 1))) {
