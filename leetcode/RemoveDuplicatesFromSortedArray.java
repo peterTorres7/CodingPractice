@@ -2,6 +2,10 @@ package leetcode;
 
 import java.util.Arrays;
 
+/**
+ * This class removes duplicates from a given sorted array in place."
+ */
+
 public class RemoveDuplicatesFromSortedArray {
 
     // Time: O(n)
