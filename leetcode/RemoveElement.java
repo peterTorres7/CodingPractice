@@ -6,12 +6,6 @@ import java.util.Arrays;
  * This class removes an element from a given array in place."
  */
 
-//                            s         
-//                        e                 
-// Input:     nums = [2,2,2,3], val = 3
-// Output: 2, nums = [2,2,_,_]
-
-
 public class RemoveElement {
 
     // Time: O(n)
