@@ -10,7 +10,7 @@ public class RemoveDuplicatesFromSortedArray {
 
     // Time: O(n)
     // Space: O(1)
-    // remove duplicates from sorted array in place using two pointers
+    // Removes duplicates from sorted array in place using two pointers
     public static int removeDuplicatesFromSortedArray(int[] nums) {
         // initialize int start index
         int startIndex = 0;

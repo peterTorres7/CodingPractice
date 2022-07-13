@@ -10,7 +10,7 @@ public class RemoveElement {
 
     // Time: O(n)
     // Space: O(1)
-    // removes element from given array in place using two pointers
+    // Removes element from given array in place using two pointers
     public static int removeElement(int[] nums, int val) {
         // initialize startIndex to 0
         int startIndex = 0;
