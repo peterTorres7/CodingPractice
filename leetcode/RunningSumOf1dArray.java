@@ -9,18 +9,21 @@ import java.util.Arrays;
 public class RunningSumOf1dArray {
 
     // Time: O(n)
-    // running sum of 1d array using one pointer
+    // running sum of 1d array using two pointers
     public static int[] runningSumOf1dArray (int[] nums) {
-        // initialize numPointer to 0
-        int numsPointer = 0;
-        // while numPointer is less than nums length - 1
-        while (numsPointer < nums.length - 1) {
-            // set nums at numPointer + 1 to nums at numPointer plus nums at numPointer  + 1
-            nums[numsPointer + 1] = nums[numsPointer] + nums[numsPointer + 1];
-            // increase numPointer plus 1
-            numsPointer++;
+        // initialzie startPointer to 0
+        int startPointer = 0;
+        // initialize endPointer to 1
+        int endPointer = 1;
+        // while endPointer is less than nums length
+        while (endPointer < nums.length) {
+            // set nums at endPointer to nums at startPointer plus nums at endPointer
+            nums[endPointer] = nums[startPointer] + nums[endPointer];
+            // increase startPointer by 1
+            startPointer++;
+            // increase endPointer by 1
+            endPointer++;
         }
-    
         // after loop return nums
         return nums;
     }
