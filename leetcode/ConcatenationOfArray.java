@@ -21,7 +21,7 @@ public class ConcatenationOfArray {
             // set ans at numsPointer to nums at numsPointer
             ans[numsPointer] = nums[numsPointer];
             // set ans at nums length plus numsPointer to nums at numsPointer
-            ans[nums.length + numsPointer] = nums[numsPointer];
+            ans[numsPointer + nums.length] = nums[numsPointer];
             // increase numsPointer
             numsPointer++;
         }
