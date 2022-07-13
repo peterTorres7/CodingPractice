@@ -10,7 +10,7 @@ public class BuildArrayFromPermutation {
     
     // Time: O(n)
     // Space: O(1)
-    // Builds an array permutation from given array
+    // Builds an array permutation from given array using for loop
     public static int[] buildArrayFromPermutation (int[] nums) {
         
         // initialize int array ans to nums length
