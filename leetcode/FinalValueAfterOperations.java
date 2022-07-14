@@ -1,8 +1,12 @@
 package leetcode;
 
+/**
+ * This class finds the final value after an array of operations are performed on it."
+ */
+
 public class FinalValueAfterOperations {
     
-    // Time: O()
+    // Time: O(n)
     // final value of variable after performing operations 
     public static int finalValueAfterOperations(String[] operations) {
         // initialize x to 0
