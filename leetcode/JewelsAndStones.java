@@ -14,7 +14,7 @@ public class JewelsAndStones {
     
     // Time: O(n)
     // jewels and stones using a set
-    public static int jewelsAndStones (String jewels, String stones) {
+    public static int jewelsAndStonesSet (String jewels, String stones) {
         // initialize set of characters jewelSet
         Set<Character> jewelSet = new HashSet<>();
         // for each jewel in jewels
@@ -36,14 +36,30 @@ public class JewelsAndStones {
 
         // return jewelCount
         return jewelCount;
+    }
 
+    // Time: O(n)
+    // jewels and stones using index of
+    public static int jewelsAndStonesIndexOf (String jewels, String stones) {
+        // initialize jewelCount to 0
+        int jewelCount = 0;
         
+        // loop through stones
+        for (int i = 0; i < stones.length(); i++) {
+            // if jewels has index of stones char at current index
+            if (jewels.indexOf(stones.charAt(i)) != -1) {
+                // increase jewelCount by 1
+                jewelCount++;
+            }
+        }
+        // after loop return jewelCount
+        return jewelCount;
     }
 
     // main method
     public static void main(String[] args) {
         String jewels = "aA";
         String stones = "aAAbbb";
-        System.out.println(jewelsAndStones(jewels, stones));
+        System.out.println(jewelsAndStonesIndexOf(jewels, stones));
     }
 }
