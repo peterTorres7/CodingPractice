@@ -14,9 +14,29 @@ package leetcode;
 
 public class NumberOfGoodPairs {
     
-    // Time: O()
+    // Time: O(n^2)
     // number of good pairs brute force
     public static int numberOfGoodPairsBruteForce (int[] nums) {
-        
+        // initialize goodPairs to 0
+        int goodPairs = 0;
+        // for each num in nums
+        for (int i = 0; i < nums.length; i++) {
+            // for each num plus 1 in nums
+            for (int j = i + 1; j < nums.length; j++) {
+                // if nums in outer loop is equal to nums in inner loop
+                if (nums[i] == nums[j]) {
+                    // increase goodPairs by 1
+                    goodPairs++;
+                }
+            }
+        }
+        // after loops return goodPairs
+        return goodPairs;
+    }
+
+    // main method
+    public static void main(String[] args) {
+        int[] nums = {1,2,3,1,1,3};
+        System.out.println(numberOfGoodPairsBruteForce(nums));
     }
 }
