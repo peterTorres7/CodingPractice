@@ -73,10 +73,32 @@ public class NumberOfGoodPairs {
         return goodPairs;
     }
 
+    // Time: O(n)
+    // number of good pairs using array
+    public static int numberOfGoodPairsArray (int[] nums) {
+        // inititalzie frequencyArray to 101
+        int[] frequencyArray = new int[101];
+        // for each num in nums
+        for (int num : nums) {
+            // to numsArray at num index increase by 1
+            frequencyArray[num]++;
+        }
+
+        // initialize goodPairs to 0
+        int goodPairs = 0;
+        // for each num in frequencyArray
+        for (int num: frequencyArray) {
+            // to goodPairs add (num times num - 1) / 2
+            goodPairs += ((num) * (num - 1)) / 2;
+        }
+
+        // after loops return goodPairs
+        return goodPairs;
+    }
 
     // main method
     public static void main(String[] args) {
         int[] nums = {1,2,3,1,1,3};
-        System.out.println(numberOfGoodPairsSort(nums));
+        System.out.println(numberOfGoodPairsArray(nums));
     }
 }
