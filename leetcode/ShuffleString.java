@@ -20,8 +20,8 @@ import java.util.Map;
 public class ShuffleString {
     
     // Time: O(n)
-    // shuffle string using a map
-    public static String shuffleString (String s, int[] indices) {
+    // shuffle string using map
+    public static String shuffleStringMap (String s, int[] indices) {
         // initialize charMap
         Map<Integer, Character> charMap = new HashMap<>();
         // for indices length
@@ -42,10 +42,25 @@ public class ShuffleString {
         return sb.toString();
     }
 
+    // Time: O(n)
+    // shuffle string using array
+    public static String shuffleStringArray (String s, int[] indices) {
+        // initialize charArray to indices length
+        char[] charArray = new char[indices.length];
+        // for indices length
+        for (int i = 0; i < indices.length; i++) {
+            // set charArray at indices at current index to s char at current index
+            charArray[indices[i]] = s.charAt(i);
+        }
+
+        //  return new String of charArray
+        return new String(charArray);
+    }
+
     // main method
     public static void main (String[] args) {
         String s = "codeleet";
         int[] indices = {4,5,6,7,0,1,2,3};
-        System.out.println(shuffleString(s, indices));
+        System.out.println(shuffleStringArray(s, indices));
     }
 }
