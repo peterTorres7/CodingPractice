@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
 
     You are given the strings key and message, which represent a cipher key 
@@ -26,7 +29,53 @@ package leetcode;
  */
 public class DecodeTheMessage {
     
-    // Time: O()
+    // Time: O(n)
     // decode message using map
-    
+    public static String decodeTheMessageMap (String key, String message) {
+        // initialize map
+        Map<Character, Character> charMap = new HashMap<>();
+        // initialize alphabetChar to 'a'
+        char alphabetChar = 'a';
+
+        // for each char in key
+        for (int i = 0; i < key.length(); i++) {
+            // if char is a space
+            if (key.charAt(i) == ' ') {
+                // continue
+                continue;
+            }
+            // if map doens't contain key at at current index
+            if (!charMap.containsKey(key.charAt(i))) {
+                // in map put key char at current index, alphabetChar
+                charMap.put(key.charAt(i), alphabetChar);
+                // increase alphabetChar by 1
+                alphabetChar++;
+            }
+        }
+
+        // initialize stringbuilder sb
+        StringBuilder sb = new StringBuilder();
+
+        // for each char in message
+        for (int i = 0; i < message.length(); i++) {
+            // if message char at current index is a space
+            if (message.charAt(i) == ' ') {
+                // to sb append a space
+                sb.append(" ");
+            } else {
+                // else to sb append map get message char at current index
+                sb.append(charMap.get(message.charAt(i)));
+            }
+        }
+
+        // return sb to string
+        return sb.toString();
+    }
+
+    // main method
+    public static void main(String[] args) {
+        String key = "the quick brown fox jumps over the lazy dog";
+        String message = "vkbs bs t suepuv";
+        System.out.println(decodeTheMessageMap(key, message));
+    }
 }
