@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CreateTargetArrayInTheGivenOrder {
-    
     /**
     Given two arrays of integers nums and index.
     Your task is to create target array under the following rules:
@@ -18,6 +16,8 @@ public class CreateTargetArrayInTheGivenOrder {
     Return the target array.
 
     */
+
+public class CreateTargetArrayInTheGivenOrder {
 
     // Time: O(n)
     // create target array in the given order using list
