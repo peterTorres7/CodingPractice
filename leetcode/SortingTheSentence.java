@@ -22,6 +22,31 @@ package leetcode;
 
 public class SortingTheSentence {
     
-    // Time: O()
-    // sorting the sentence
+    // Time: O(n)
+    // sorting the sentence using array
+    public static String sortingTheSentenceArray (String s) {
+        // init string array wordsArray to s split by " "
+        String[] wordsArray = s.split(" ");
+        // init string array ansArray to new string array of wordsArray length
+        String[] ansArray = new String[wordsArray.length];
+
+        // for each word in wordsArray
+        for (String word : wordsArray) {
+            // init ansIndex to Character get numeric value of word char at word length minus 1
+            int ansIndex = Character.getNumericValue(word.charAt(word.length() - 1));
+            // init ansWord to word replace word char at word length minus 1 with " "
+            String ansWord = word.replace(word.charAt(word.length() - 1), ' ');
+            // set ansArray at ansIndex - 1 to ansWord stripped
+            ansArray[ansIndex - 1] = ansWord.strip();
+        }
+
+        // return String join with " " ansArray
+        return String.join(" ", ansArray);
+    }
+
+    // main method
+    public static void main(String[] args) {
+        String s = "is2 sentence4 This1 a3";
+        System.out.println(sortingTheSentenceArray(s));
+    }
 }
