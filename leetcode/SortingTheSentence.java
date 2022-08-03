@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
     A sentence is a list of words that are separated by a single space 
     with no leading or trailing spaces. Each word consists of lowercase 
@@ -44,16 +47,41 @@ public class SortingTheSentence {
         return String.join(" ", ansArray);
     }
 
-    // Time: O()
+    // Time: O(n)
     // sorting the sentence using map
     public static String sortingTheSentenceMap (String s) {
-        // 
+        // init map 
+        Map<Integer, String> map = new HashMap<>();
+        // init string array wordsArray to s split by " "
+        String[] wordsArray = s.split(" ");
+
+        // for each word in words
+        for (String word : wordsArray) {
+            // init index to Character get value of word char at word length minus 1
+            int index = Character.getNumericValue(word.charAt(word.length() - 1));
+            // init strippedWord to word replace word char at word length minus 1 with ' '
+            String strippedWord = word.replace(word.charAt(word.length() - 1), ' ');
+            // in map put index and strippedWord
+            map.put(index, strippedWord);
+        }
+
+        // init string builder sb
+        StringBuilder sb = new StringBuilder();
+
+        // for each word starting at 1 in map size
+        for (int i = 1; i <= map.size(); i++) {
+            // to sb append map get current index
+            sb.append(map.get(i));
+        }
+
+        // return sb to string trim
+        return sb.toString().trim();
     }
 
     
     // main method
     public static void main(String[] args) {
         String s = "is2 sentence4 This1 a3";
-        System.out.println(sortingTheSentenceArray(s));
+        System.out.println(sortingTheSentenceMap(s));
     }
 }
