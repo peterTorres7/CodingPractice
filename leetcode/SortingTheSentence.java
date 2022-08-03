@@ -34,7 +34,7 @@ public class SortingTheSentence {
         for (String word : wordsArray) {
             // init ansIndex to Character get numeric value of word char at word length minus 1
             int ansIndex = Character.getNumericValue(word.charAt(word.length() - 1));
-            // init ansWord to word replace word char at word length minus 1 with " "
+            // init ansWord to word replace word char at word length minus 1 with ' '
             String ansWord = word.replace(word.charAt(word.length() - 1), ' ');
             // set ansArray at ansIndex - 1 to ansWord stripped
             ansArray[ansIndex - 1] = ansWord.strip();
@@ -44,6 +44,13 @@ public class SortingTheSentence {
         return String.join(" ", ansArray);
     }
 
+    // Time: O()
+    // sorting the sentence using map
+    public static String sortingTheSentenceMap (String s) {
+        // 
+    }
+
+    
     // main method
     public static void main(String[] args) {
         String s = "is2 sentence4 This1 a3";
