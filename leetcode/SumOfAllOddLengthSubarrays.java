@@ -18,5 +18,15 @@ public class SumOfAllOddLengthSubarrays {
     
     // Time O()
     // sum of all odd length subarrays using brute force
-    
+    public static int sumOfAllOddLengthSubarrays (int[] arr) {
+        // init sum to 0
+
+        // for each num in arr lenth increasing by 2 
+        // for each num in arr length
+        // if i plus j is less than array length
+        // for 0 to equal to i
+        // to sum add array at j + k
+
+        // return sum
+    }
 }
