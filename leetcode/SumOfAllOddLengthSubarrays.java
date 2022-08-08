@@ -16,9 +16,9 @@ package leetcode;
 
 public class SumOfAllOddLengthSubarrays {
     
-    // Time O(n*m)
+    // Time: O(n*m)
     // sum of all odd length subarrays using brute force
-    public static int sumOfAllOddLengthSubarrays (int[] arr) {
+    public static int sumOfAllOddLengthSubarraysBruteForce (int[] arr) {
         // init sum to 0
         int sum = 0;
         // init arraySize to 1
@@ -42,6 +42,30 @@ public class SumOfAllOddLengthSubarrays {
         return sum;
     }
 
+    // Time: O(n)
+    // sum of all odd length subarrays using for loop
+    public static int sumOfAllOddLengthSubarrays (int[] arr) {
+        // init sum to 0
+        int sum = 0;
+
+        // for each num in arr length
+        for (int i = 0; i < arr.length; i++) {
+            // init start to i + 1
+            int start = i + 1;
+            // init end to arr length - i
+            int end = arr.length - i;
+            // init totalSubs to start times end
+            int totalSubs = start * end;
+            // init oddSubs to totalSubs even? totalSubs / 2 else totalSubs / 2 + 1
+            int oddSubs = totalSubs % 2 == 0 ? totalSubs / 2 : totalSubs / 2 + 1;
+            // to sum add oddSubs * arr at i
+            sum += oddSubs * arr[i];
+        }
+
+        // return sum
+        return sum;
+    }
+ 
     // main method
     public static void main(String[] args) {
         int[] arr = new int[] {1,4,2,5,3};
