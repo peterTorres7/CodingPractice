@@ -11,8 +11,8 @@ package leetcode;
     Return the number of unique arithmetic triplets.
 
 
-    Example 1:
-
+    Example 1: 
+                         
     Input: nums = [0,1,4,6,7,10], diff = 3
     Output: 2
     Explanation:
@@ -23,14 +23,35 @@ package leetcode;
 
 public class NumberOfArithmeticTriplets {
  
-    // Time: O()
+    // Time: O(n^3)
     // number of arithmetic triplets using  brute force
-    public int numberOfArithmeticTripletsBruteForce (int[] nums, int diff) {
+    public static int numberOfArithmeticTripletsBruteForce (int[] nums, int diff) {
         // init ans to 0
+        int ans = 0;
 
         // for each num i in nums length
-        // for each num j i plus one in nums length
-        // for each num k j plus one in nums length
-        
+        for (int i = 0; i < nums.length; i++) {
+            // for each num j i plus one in nums length
+            for (int j = i + 1; j < nums.length; j++) {
+                // for each num k j plus one in nums length
+                for (int k = j + 1; k < nums.length; k++) {
+                    // if nums at j minus nums at i equals diff AND nums at k minus nums at j equal diff
+                    if (nums[j] - nums[i] == diff && nums[k] - nums[j] == diff) {
+                        // increase ans by 1
+                        ans++;
+                    }
+                }
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+    // main method
+    public static void main (String[] args) {
+        int[] nums = {0,1,4,6,7,10};
+        int diff = 3;
+        System.out.println(numberOfArithmeticTripletsBruteForce(nums, diff));
     }
 }
