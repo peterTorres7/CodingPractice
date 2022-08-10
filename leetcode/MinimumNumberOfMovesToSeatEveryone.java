@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
     
     There are n seats and n students in a room. You are given an array seats of length n, 
@@ -35,6 +37,28 @@ public class MinimumNumberOfMovesToSeatEveryone {
     // Time: O(nlogn)
     // minimum number of moves to seat everyone using sort
     public static int minimumNumberOfMovesToSeatEveryoneSort (int[] seats, int[] students) {
-        
+        // init ans to 0
+        int ans = 0;
+        // sort seats
+        Arrays.sort(seats);
+        // sort students
+        Arrays.sort(students);
+
+        // for each student in students
+        for (int i = 0; i < students.length; i++) {
+            // ans += math abs of students at i minust seats at i
+            ans += Math.abs(students[i] - seats[i]);
+        }
+
+        // return ans
+        return ans;
     }
+
+    // main method
+    public static void main(String[] args) {
+        int[] seats = {3,1,5};
+        int[] students = {2,7,4};
+        System.out.println(minimumNumberOfMovesToSeatEveryoneSort(seats, students));
+    }
+
 }
