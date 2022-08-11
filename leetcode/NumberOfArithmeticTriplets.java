@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
     You are given a 0-indexed, strictly increasing integer array nums and a positive integer diff. 
     A triplet (i, j, k) is an arithmetic triplet if the following conditions are met:
@@ -48,10 +51,38 @@ public class NumberOfArithmeticTriplets {
         return ans;
     }
 
+    // Time: O(n)
+    // number of arithmetic triplets using map
+    public static int numberOfArithmeticTripletsMap (int[] nums, int diff) {
+        // init ans to 0
+        int ans = 0;
+        // init numsMap
+        Map<Integer, Integer> numsMap = new HashMap<>();
+
+        // for each num i in nums length
+        for (int i = 0; i < nums.length; i++) {
+            // in numsMap put i, nums at i
+            numsMap.put(i, nums[i]);
+        }
+
+        // for each num i starting at 1 in nums length minus 1
+        for (int i = 1; i < nums.length - 1; i++) {
+            // if numsMap contains value nums at i plus diff 
+            // AND numsMap contains value nums at i minus diff
+            if (numsMap.containsValue(nums[i] - diff) && numsMap.containsValue(nums[i] + diff)) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
     // main method
     public static void main (String[] args) {
         int[] nums = {0,1,4,6,7,10};
         int diff = 3;
-        System.out.println(numberOfArithmeticTripletsBruteForce(nums, diff));
+        System.out.println(numberOfArithmeticTripletsMap(nums, diff));
     }
 }
