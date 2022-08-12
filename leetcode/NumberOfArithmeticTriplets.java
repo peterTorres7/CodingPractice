@@ -79,10 +79,38 @@ public class NumberOfArithmeticTriplets {
         return ans;
     }
 
+    // Time: O(n)
+    // number of arithmetic triplets using boolean array
+    public static int numberOfArithmeticTripletsArray (int[] nums, int diff) {
+        // init ans to 0
+        int ans = 0;
+        // init boolean array numsArray to new boolean array of size 201
+        boolean[] numsArray = new boolean[201];
+
+        // for each num in nums
+        for (int num : nums) {
+            // set numsArray at num to true
+            numsArray[num] = true;
+        }
+
+        // for each num i in nums length AND nums at i plus diff times 2 is less than numsArray length
+        for (int i = 0; i < nums.length && nums[i] + diff * 2 < numsArray.length; i++) {
+            // if numsArray at nums i plus diff is true AND numsArray at nums i plus diff times 2 is true
+            if (numsArray[nums[i] + diff] == true && numsArray[nums[i] + diff * 2] == true) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
     // main method
     public static void main (String[] args) {
         int[] nums = {0,1,4,6,7,10};
         int diff = 3;
-        System.out.println(numberOfArithmeticTripletsMap(nums, diff));
+        System.out.println(numberOfArithmeticTripletsArray(nums, diff));
     }
 }
