@@ -30,9 +30,39 @@ package leetcode;
 
 public class MaximumNestingDepthOfTheParentheses {
     
-    // Time: O()
+    // Time: O(n)
     // maximum nesting depth of the parentheses using for loop
     public static int maximumNestingDepthOfTheParentheses (String s) {
-        
+        // init maxDepth to 0
+        int maxDepth = 0;
+        // init currentDepth to 0
+        int currentDepth = 0;
+
+        // for each char i in s length
+        for (int i = 0; i < s.length(); i++) {
+            // if s char at i equals '('
+            if (s.charAt(i) == '(') {
+                // increase currentDepth by 1
+                currentDepth++;
+                // if currentDepth is greater than maxDepth
+                if (currentDepth > maxDepth) {
+                    // set maxDepth to currentDepth
+                    maxDepth = currentDepth;
+                }
+            // else if s char equals ')'
+            } else if (s.charAt(i) == ')') {
+                // decrease currentDepth by 1
+                currentDepth--;
+            }
+        }
+
+        // return maxDepth
+        return maxDepth;
+    }
+
+    // main method
+    public static void main (String[] args) {
+        String s = "(1+(2*3)+((8)/4))+1";
+        System.out.println(maximumNestingDepthOfTheParentheses(s));
     }
 }
