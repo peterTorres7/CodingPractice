@@ -37,10 +37,34 @@ public class CountNumberOfPairsWithAbsoluteDifferenceK {
         return ans;
     }
 
+    // Time: O()
+    // count number of pairs with absolute difference k using array
+    public static int countNumberOfPairsWithAbsoluteDifferenceKArray (int[] nums, int k) {
+        // init ans to 0
+        int ans = 0;
+        // init frequencyArray to new int of size 101 plus 
+        int[] frequencyArray = new int[101 + k];
+
+        // for each num in nums
+        for (int num : nums) {
+            // increase frequencyArray at num by 1
+            frequencyArray[num]++;
+        }
+
+        // for each num in nums
+        for (int num : nums) {
+            // to ans add frequencyArray at num plus k
+            ans += frequencyArray[num + k];
+        }
+
+        // return ans
+        return ans;
+    }
+
     // main method
     public static void main(String[] args) {
         int[] nums = {1,2,2,1};
         int k = 1;
-        System.out.println(countNumberOfPairsWithAbsoluteDifferenceKBruteForce(nums, k));
+        System.out.println(countNumberOfPairsWithAbsoluteDifferenceKArray(nums, k));
     }
 }
