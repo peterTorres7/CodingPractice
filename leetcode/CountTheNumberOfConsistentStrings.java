@@ -17,7 +17,40 @@ package leetcode;
 
 public class CountTheNumberOfConsistentStrings {
     
-    // Time: O()
+    // Time: O(n*m)
     // count the number of consistent strings
-    
+    public static int countTheNumberOfConsistentStrings (String allowed, String[] words) {
+        // init ans to 0
+        int ans = 0;
+
+        // for each word in words
+        for (String word : words) {
+            // init valid to true
+            boolean valid = true;
+            // for each char in word
+            for (char c : word.toCharArray()) {
+                // if allowed index of char doesn't exist
+                if (allowed.indexOf(c) == -1) {
+                    // set valid to false
+                    valid = false;
+                }
+            }
+            // after inner loop if falid is true
+            if (valid) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+    // main
+    public static void main(String[] args) {
+        String allowed = "ab";
+        String[] words = {"ad","bd","aaab","baa","badab"};
+        System.out.println(countTheNumberOfConsistentStrings(allowed, words));
+    }
+
 }
