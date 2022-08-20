@@ -25,18 +25,18 @@ public class CountTheNumberOfConsistentStrings {
 
         // for each word in words
         for (String word : words) {
-            // init valid to true
-            boolean valid = true;
+            // init consistentWord to true
+            boolean consistentWord = true;
             // for each char in word
             for (char c : word.toCharArray()) {
                 // if allowed index of char doesn't exist
                 if (allowed.indexOf(c) == -1) {
-                    // set valid to false
-                    valid = false;
+                    // set consistentWord to false
+                    consistentWord = false;
                 }
             }
-            // after inner loop if falid is true
-            if (valid) {
+            // after inner loop if consistentWord is true
+            if (consistentWord) {
                 // increase ans by 1
                 ans++;
             }
