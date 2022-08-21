@@ -16,5 +16,13 @@ public class ToLowerCase {
 
     // Time: O(1)
     // to lower case
+    public static String toLowerCase (String s) {
+        return s.toLowerCase();
+    }
 
+    // main 
+    public static void main(String[] args) {
+        String s = "Hello";       
+        System.out.println(toLowerCase(s));
+    }
 }
