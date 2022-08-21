@@ -19,14 +19,34 @@ public class TruncateSentence {
     // truncate sentence
     public static String truncateSentence (String s, int k) {
         // init Stringbuilder sb
+        StringBuilder sb = new StringBuilder();
         // init spaceCount to 0
+        int spaceCount = 0;
 
         // for each char in s
-        // if char equals ' '
-        // increase spaceCount by 1
-        // if spaceCount equals k
-        // return sb to string
-        // to sb append char
+        for (char c : s.toCharArray()) {
+            // if char equals ' '
+            if (c == ' ') {
+                // increase spaceCount by 1
+                spaceCount++;
+            }
+            // if spaceCount equals k
+            if (spaceCount == k) {
+                // break
+                break;
+            }
+            // to sb append char
+            sb.append(c);
+        }
 
+        // return sb to string
+        return sb.toString();
+    }
+
+    // main
+    public static void main(String[] args) {
+        String s = "Hello how are you Contestant";
+        int k = 4;
+        System.out.println(truncateSentence(s, k));
     }
 }
