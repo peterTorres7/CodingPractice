@@ -19,7 +19,35 @@ package leetcode;
 
 public class CountAsterisks {
     
-    // Time: O()
+    // Time: O(n)
     // count asterisks using brute force
-    
+    public static int countAsterisks (String s) {
+        // init asterisk to 0
+        int asterisk = 0;
+        // init bar to 0
+        int bar = 0;
+
+        // for each char in s
+        for (char c : s.toCharArray()) {
+            // if char equals '|'
+            if (c == '|') {
+                // increase bar by 1
+                bar++;
+            }
+            // if bar is even AND char equals '*'
+            if (bar % 2 == 0 && c == '*') {
+                // increase asterisk by 1
+                asterisk++;
+            }
+        }
+
+        // return asterisk
+        return asterisk;
+    }
+
+    // main
+    public static void main(String[] args) {
+        String s = "l|*e*et|c**o|*de|";
+        System.out.println(countAsterisks(s));
+    }
 }
