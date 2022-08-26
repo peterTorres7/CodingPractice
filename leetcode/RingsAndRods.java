@@ -25,7 +25,46 @@ Output: 1
 
 public class RingsAndRods {
     
-    // Time: O()
+    // Time: O(n)
     // rings and rods using string array
+    public static int ringsAndRods (String rings) {
+        // init ans to 0
+        int ans = 0;
+        // init string array rods of length 10
+        String[] rods = new String[10];
 
+        // for each char i in rings
+        for (int i = 0; i < rings.length(); i += 2) {
+            // init rodsIndex to Character get numeric value of rings char at index plus 1
+            int rodsIndex = Character.getNumericValue(rings.charAt(i + 1));
+            // init string ring to rings char at index plus ""
+            String ring = rings.charAt(i) + "";
+            // if rods at rodsIndex is null
+            if (rods[rodsIndex] == null) {
+                // set rods at rodsIndex to ""
+                rods[rodsIndex] = "";
+            }
+            // to rods at rodsIndex add ring
+            rods[rodsIndex] += ring;
+        }
+
+
+        // for each rod in rods
+        for (String rod : rods) {
+            // if rod is not null AND rod contains "R" AND rod contains "G" AND rod contains "B"
+            if (rod != null && rod.contains("R") && rod.contains("G") && rod.contains("B")) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+    // main
+    public static void main(String[] args) {
+        String rings = "B0B6G0R6R0R6G9";
+        System.out.println(ringsAndRods(rings));
+    }
 }
