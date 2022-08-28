@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
 /**
 There are n rings and each ring is either red, green, or blue. 
 The rings are distributed across ten rods labeled from 0 to 9.
@@ -82,9 +86,45 @@ public class RingsAndRods {
         return ans;
     }
 
+    // Time: O(n)
+    // rings and rods using map
+    public static int ringsAndRodsMap (String rings) {
+        // init ans to 0
+        int ans = 0;
+        // init map
+        Map<Integer, HashSet<Character>> map = new HashMap<>();
+        // for each 0 to 9
+        for (int i = 0; i < 10; i++) {
+            // in map put index, new hashset
+            map.put(i, new HashSet<Character>());
+        }
+
+        // for each char in rings
+        for (int i = 0; i < rings.length(); i += 2) {
+            // init mapIndex to rings char at index plus 1
+            Integer mapIndex = Character.getNumericValue(rings.charAt(i + 1));
+            // init color to rings char at index
+            Character color = rings.charAt(i);
+            // to map get mapIndex add color
+            map.get(mapIndex).add(color);
+        }
+
+        // for each set in map values
+        for (HashSet<Character> set : map.values()) {
+            // if set size equals 3
+            if (set.size() == 3) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
     // main
     public static void main(String[] args) {
         String rings = "B0B6G0R6R0R6G9";
-        System.out.println(ringsAndRodsContains(rings));
+        System.out.println(ringsAndRodsMap(rings));
     }
 }
