@@ -62,9 +62,29 @@ public class RingsAndRods {
         return ans;
     }
 
+    // Time: O(n)
+    // rings and rods using contains
+    public static int ringsAndRodsContains (String rings) {
+        // init ans to 0
+        int ans = 0;
+
+        // for each 0 to 9
+        for (int i = 0; i < 10; i++) {
+            // if rings contains "R" + current index AND rings contains "R" + current index 
+            // AND rings contains "R" + current index
+            if (rings.contains("R" + i) && rings.contains("G" + i) && rings.contains("B" + i)) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans by 1
+        return ans;
+    }
+
     // main
     public static void main(String[] args) {
         String rings = "B0B6G0R6R0R6G9";
-        System.out.println(ringsAndRods(rings));
+        System.out.println(ringsAndRodsContains(rings));
     }
 }
