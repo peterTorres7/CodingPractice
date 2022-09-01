@@ -15,9 +15,9 @@ package leetcode;
 
 public class ReverseWordsInAStringIII {
     
-    // Time: O()
-    // reverse words in a string III 
-    public static String reverseWordsInAStringIII (String s) {
+    // Time: O(n)
+    // reverse words in a string III using brute force
+    public static String reverseWordsInAStringIIIBruteForce (String s) {
         // init stringbuilder ans 
         StringBuilder ans = new StringBuilder();
         // init string array words to s split by " "
@@ -55,9 +55,29 @@ public class ReverseWordsInAStringIII {
     }
 
 
+    // Time: O(n)
+    // reverse words in a string III using stringbuilder
+    public static String reverseWordsInAStringIIIStringBuilder (String s) {
+        // init stringbuilder ans 
+        StringBuilder ans = new StringBuilder();
+        // init string array words to s split by " "
+        String[] words = s.split("\\s");
+
+        // for each word in words
+        for (String word : words) {
+            // init stringbuilder reversed to new strinbuilder of word reverse
+            StringBuilder reversed = new StringBuilder(word).reverse();
+            // to ans append reversed append " "
+            ans.append(reversed).append(" ");
+        }
+
+        // return ans to string trim
+        return ans.toString().trim();
+    }
+
     // main
     public static void main(String[] args) {
         String s = "Let's take LeetCode contest";
-        System.out.println(reverseWordsInAStringIII(s));
+        System.out.println(reverseWordsInAStringIIIStringBuilder(s));
     }
 }
