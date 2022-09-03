@@ -28,6 +28,19 @@ package leetcode;
 
 public class ReplaceAllDigitsWithCharacters {
     
-    // Time: O()
-    // replace all digits with characters
+    // Time: O(n)
+    // replace all digits with characters using maps
+    public static String replaceAllDigitsWtihCharactersMaps (String s) {
+        // init map of integer, char indexMap
+        // init map of char, integer charMap
+
+        // init index to 1
+        // for each char 'a' to 'z'
+        // in indexMap put index, char
+        // in charMap put char, index
+
+        // init char array wordChars to s to char array
+        // for each char i to wordChars length minus 1 increasing 1 by 2
+        // init char index to indexMap get wordChars at index
+    }
 }
