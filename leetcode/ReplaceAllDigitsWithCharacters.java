@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
 
     You are given a 0-indexed string s that has lowercase English letters in its even indices 
@@ -32,15 +35,42 @@ public class ReplaceAllDigitsWithCharacters {
     // replace all digits with characters using maps
     public static String replaceAllDigitsWtihCharactersMaps (String s) {
         // init map of integer, char indexMap
+        Map<Integer, Character> indexMap = new HashMap<>();
         // init map of char, integer charMap
+        Map<Character, Integer> charMap = new HashMap<>();
 
         // init index to 1
+        int index = 1;
         // for each char 'a' to 'z'
-        // in indexMap put index, char
-        // in charMap put char, index
+        for (char c = 'a'; c <= 'z'; c++) {
+            // in indexMap put index, char
+            indexMap.put(index, c);
+            // in charMap put char, index
+            charMap.put(c, index);
+            // increase index by 1
+            index++;
+        }
 
         // init char array wordChars to s to char array
+        char[] wordChars = s.toCharArray();
         // for each char i to wordChars length minus 1 increasing 1 by 2
-        // init char index to indexMap get wordChars at index
+        for (int i = 0; i < wordChars.length - 1; i += 2) {
+            // init char index to charMap get wordChars at index
+            int charIndex = charMap.get(wordChars[i]);
+            // init intIndex to character get numeric value of wordChars at index plus one
+            int intIndex = Character.getNumericValue(wordChars[i + 1]);
+            // set wordChars at index plus one to indexMap get charIndx plus intIndex
+            wordChars[i + 1] = indexMap.get(charIndex + intIndex);
+        }
+
+        // return new String of wordChars 
+        return new String(wordChars);
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        String s = "a1c1e1";
+        System.out.println(replaceAllDigitsWtihCharactersMaps(s));
     }
 }
