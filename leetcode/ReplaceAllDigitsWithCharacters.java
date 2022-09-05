@@ -33,7 +33,7 @@ public class ReplaceAllDigitsWithCharacters {
     
     // Time: O(n)
     // replace all digits with characters using maps
-    public static String replaceAllDigitsWtihCharactersMaps (String s) {
+    public static String replaceAllDigitsWithCharactersMaps (String s) {
         // init map of integer, char indexMap
         Map<Integer, Character> indexMap = new HashMap<>();
         // init map of char, integer charMap
@@ -69,20 +69,27 @@ public class ReplaceAllDigitsWithCharacters {
 
     // Time: O(n)
     // replace all digits with characters using char
-    public static String replaceAllDigitsWithCharacterChar (String s) {
+    public static String replaceAllDigitsWithCharactersChar (String s) {
         // init char array wordChars to s to char array
+        char[] wordChars = s.toCharArray();
 
         // for each char i in wordChars length - 1 increasing i by 2
-        // init char c to wordsChars at index
-        // init count to character get numeric value of wordChars at index plus 1
-        // set wordChars at index plus 1 to c plus equal count
+        for (int i = 0; i < wordChars.length - 1; i += 2) {
+            // init char c to wordsChars at index
+            char c = wordChars[i];
+            // init num val to character get numeric value of wordChars at index plus 1
+            int numVal = Character.getNumericValue(wordChars[i + 1]);
+            // set wordChars at index plus 1 to c plus equal count
+            wordChars[i + 1] = c+=numVal;
+        }
 
         // return new string of wordChars
+        return new String(wordChars);
     }
 
     // main
     public static void main(String[] args) {
         String s = "a1c1e1";
-        System.out.println(replaceAllDigitsWtihCharactersMaps(s));
+        System.out.println(replaceAllDigitsWithCharactersChar(s));
     }
 }
