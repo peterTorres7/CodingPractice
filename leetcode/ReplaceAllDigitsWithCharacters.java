@@ -67,6 +67,18 @@ public class ReplaceAllDigitsWithCharacters {
         return new String(wordChars);
     }
 
+    // Time: O(n)
+    // replace all digits with characters using char
+    public static String replaceAllDigitsWithCharacterChar (String s) {
+        // init char array wordChars to s to char array
+
+        // for each char i in wordChars length - 1 increasing i by 2
+        // init char c to wordsChars at index
+        // init count to character get numeric value of wordChars at index plus 1
+        // set wordChars at index plus 1 to c plus equal count
+
+        // return new string of wordChars
+    }
 
     // main
     public static void main(String[] args) {
