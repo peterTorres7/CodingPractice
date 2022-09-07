@@ -24,5 +24,11 @@ public class DecryptStringFromAlphabetToIntegerMapping {
     
     // Time: O()
     // decrypt string from alphabet to integer mapping
+
+
+
+    // main
+    public static void main(String[] args) {
     
+    }
 }
