@@ -22,9 +22,31 @@ package leetcode;
 
 public class DecryptStringFromAlphabetToIntegerMapping {
     
-    // Time: O()
+    // Time: O(n)
     // decrypt string from alphabet to integer mapping
+    public static String decryptStringFromAlphabetToIntegerMapping (String s) {
+        // init stringbuilder ans 
+        // init map of string and char
+        // init num to 1
 
+        // for each char 'a' to 'z'
+        // if num is greater than or equal to 10
+        // in map put num plus "#", char
+        // increase num by 1
+        // else in map put num, char
+        // increase num by 1
+
+        // init sPointer to 0
+        // init stringbuilder subS to ""
+        // while sPointer is less than s length
+        // if sPointer is less than s length minus 2 AND s char at sPointer plus 2 is equal to '#'
+        // set subS to s substring from sPointer to sPointer plus 3
+        // to ans append map get subS
+        // increase sPointer by 3
+        // else set subS to s substring from sPointer to sPointer plus 1
+        // to ans append map get subS
+        // increase sPointer by 1
+    }
 
 
     // main
