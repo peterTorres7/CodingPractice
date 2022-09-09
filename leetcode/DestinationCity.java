@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
 
     You are given the array paths, where paths[i] = [cityAi, cityBi] 
@@ -21,5 +25,42 @@ public class DestinationCity {
     
     // Time: O(n)
     // destination city using map
-    
+    public static String destinationCity (List<List<String>> paths) {
+        // init destination to ""
+        String destination = "";
+        // init map of string, string
+        Map<String, String> map = new HashMap<>();
+
+        // for each path in paths
+        for (List<String> path :paths) {
+            // in map put path get 0, path get 1
+            map.put(path.get(0), path.get(1));
+        }
+
+        // for each path in paths
+        for (List<String> path : paths) {
+            // if map doesn't contain key path get 1
+            if (!map.containsKey(path.get(1))) {
+                // set destination to path get 1
+                destination = path.get(1);
+                // break
+                break;
+            }
+
+        }
+
+        // return destination
+        return destination;
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        List<List<String>> paths = List.of(
+                                        List.of("London","New York"),
+                                        List.of("New York","Lima"),
+                                        List.of("Lima","Sao Paulo")
+                                    );
+        System.out.println(destinationCity(paths));
+    }
 }
