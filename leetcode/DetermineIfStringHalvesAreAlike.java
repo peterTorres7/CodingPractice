@@ -57,10 +57,46 @@ public class DetermineIfStringHalvesAreAlike {
         return a == b;
     }
 
+    // Time: O(n)
+    // determine if string halves are alike using brute force
+    public static boolean determineIfStringHalvesAreAlikeBruteForce (String s) {
+        // init a to 0
+        int a = 0;
+        // init b to 0
+        int b = 0;
+
+        // for each char i in s
+        for (int i = 0; i < s.length(); i++) {
+            // init c to s char at i
+            char c = s.charAt(i);
+            // if i is less than s length divided by 2
+            if (i < s.length() / 2) {
+                // if c equals 'a' OR c equals 'e' OR c equals 'i' OR c equals 'o' OR c equals 'u'
+                if ( c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+                // OR c equals 'A' OR c equals 'E' OR c equals 'I' OR c equals 'O' OR c equals 'U'
+                || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                    // increase a by 1
+                    a++;
+                }
+            } else {
+                // else
+                // if c equals 'a' OR c equals 'e' OR c equals 'i' OR c equals 'o' OR c equals 'u'
+                if ( c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+                // OR c equals 'A' OR c equals 'E' OR c equals 'I' OR c equals 'O' OR c equals 'U'
+                || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                    // increase b by 1
+                    b++;
+                }
+            }
+        }
+
+        // return a equals b
+        return a == b;
+    }
 
     // main
     public static void main(String[] args) {
-        String s = "textbook";
-        System.out.println(determineIfStringHalvesAreAlike(s));
+        String s = "book";
+        System.out.println(determineIfStringHalvesAreAlikeBruteForce(s));
     }
 }
