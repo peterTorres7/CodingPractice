@@ -30,7 +30,7 @@ public class DetermineColorOfAChessboardSquare {
         int second = coordinates.charAt(1) - '0';
         
         // if first is even AND second is even OR first is odd AND second is odd return true else false
-        return (first % 2 == 0 && second % 2 == 0) || (first % 2 != 0 && second % 2 != 0) ? true : false;
+        return first % 2 == second % 2;
     }
 
 
