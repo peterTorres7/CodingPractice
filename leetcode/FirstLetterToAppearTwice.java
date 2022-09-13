@@ -48,10 +48,36 @@ public class FirstLetterToAppearTwice {
         return ans;
     }
 
+    // Time: O(n)
+    // first letter to appear twice using array
+    public static char firstLetterToAppearTwiceArray (String s) {
+        // init ans to 0
+        char ans = Character.MIN_VALUE;
+        // init freqCount to size 26
+        int[] freqCount = new int[26];
+
+        // for each char c in s to char array
+        for (char c : s.toCharArray()) {
+            // increase freqCount at c - 'a' by 1
+            freqCount[c - 'a']++;
+            // if freqCount at c - 'a' equals 2
+            if (freqCount[c - 'a'] == 2) {
+                // set ans to c
+                ans = c;
+                // break
+                break;
+            }
+
+        }
+
+        // return ans
+        return ans;
+    }
+
 
     // main
     public static void main(String[] args) {
         String s = "abccbaacz";
-        System.out.println(firstLetterToAppearTwiceMap(s));
+        System.out.println(firstLetterToAppearTwiceArray(s));
     }
 }
