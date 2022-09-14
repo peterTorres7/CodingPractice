@@ -23,5 +23,31 @@ public class CheckIfAWordOccursAsAPrefixOfAnyWordInASentence {
     
     // Time: O(n)
     // check if a word occurs as a prefix of any word in a sentence
-    
+    public static int checkIfAWordOccursAsAPrefixOfAnyWordInASentence (String sentence, String searchWord) {
+        // init ans to -1
+        int ans = -1;
+        // init words to sentence split by " "
+        String[] words = sentence.split(" ");
+
+        // for each word i in words 
+        for (int i = 0; i < words.length; i++) {
+            // if words at i starts with searchWord
+            if (words[i].startsWith(searchWord)) {
+                //  return i plus 1
+                return i + 1;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        String sentence = "i love eating burger";
+        String searchWord = "burg";
+
+        System.out.println(checkIfAWordOccursAsAPrefixOfAnyWordInASentence(sentence, searchWord));
+    }
 }
