@@ -22,5 +22,28 @@ public class CountPrefixesOfAGivenString {
     
     // Time: O(n)
     // count prefixes of a given string
-    
+    public static int countPrefixesOfAGivenString (String[] words, String s) {
+        // init ans to 0
+        int ans = 0;
+        
+        // for each word in words
+        for (String word : words) {
+            // if s starts with word
+            if (s.startsWith(word)) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        String[] words = {"a","b","c","ab","bc","abc"};
+        String s = "abc";
+        System.out.println(countPrefixesOfAGivenString(words, s));
+    }
 }
