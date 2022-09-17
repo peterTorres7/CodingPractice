@@ -67,8 +67,6 @@ public class MaximumNumberOfPairsInArray {
     // Time: O(n)
     // maximum number of pairs in array using array
     public static int[] maximumNumberOfPairsInArrayUsingArray (int[] nums) {
-        // init ans to size 2
-        int[] ans = new int[2];
         // init freqArray to size 101
         int[] freqArray = new int[101];
         // init pairs to 0
@@ -89,15 +87,9 @@ public class MaximumNumberOfPairsInArray {
             // increase leftOvers by num modulo 2
             leftOvers += num % 2;
         }
- 
-
-        // set ans at 0 to pairs
-        ans[0] = pairs;
-        // set ans at 1 to leftOvers
-        ans[1] = leftOvers;
 
         // return ans
-        return ans;
+        return new int[] {pairs, leftOvers};
     }
 
     // main
