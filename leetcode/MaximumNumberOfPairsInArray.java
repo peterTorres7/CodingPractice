@@ -30,7 +30,7 @@ public class MaximumNumberOfPairsInArray {
     
     // Time: O(n)
     // maximum number of pairs in array
-    public static int[] maximumNumberOfPairsInArray (int[] nums) {
+    public static int[] maximumNumberOfPairsInArrayMap (int[] nums) {
         // init ans to new int of size 2
         int[] ans = new int[2];
 
@@ -64,10 +64,45 @@ public class MaximumNumberOfPairsInArray {
         return ans;
     }
 
+    // Time: O(n)
+    // maximum number of pairs in array using array
+    public static int[] maximumNumberOfPairsInArrayUsingArray (int[] nums) {
+        // init ans to size 2
+        int[] ans = new int[2];
+        // init freqArray to size 101
+        int[] freqArray = new int[101];
+        // init pairs to 0
+        int pairs = 0;
+        // init leftOvers to 0
+        int leftOvers = 0;
+
+        // for each num in nums
+        for (int num : nums) {
+            // increase freqArray at num by 1
+            freqArray[num]++;
+        }
+
+        // for each num in freqArray
+        for (int num : freqArray) {
+            // increase pairs by num divided by 2
+            pairs += num / 2;
+            // increase leftOvers by num modulo 2
+            leftOvers += num % 2;
+        }
+ 
+
+        // set ans at 0 to pairs
+        ans[0] = pairs;
+        // set ans at 1 to leftOvers
+        ans[1] = leftOvers;
+
+        // return ans
+        return ans;
+    }
 
     // main
     public static void main(String[] args) {
         int[] nums = {1,3,2,1,3,2,2};
-        System.out.println(Arrays.toString(maximumNumberOfPairsInArray(nums)));
+        System.out.println(Arrays.toString(maximumNumberOfPairsInArrayUsingArray(nums)));
     }
 }
