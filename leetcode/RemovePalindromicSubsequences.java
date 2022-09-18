@@ -22,7 +22,35 @@ package leetcode;
  */
 
 public class RemovePalindromicSubsequences {
-    // Time: O()
+    // Time: O(n)
     // remove palindromic subsequences
-       
+    public static int removePalindromicSubsequences (String s) {
+        // init left to 0
+        int left = 0;
+        // init right to s length minus 1
+        int right = s.length() - 1;
+
+        // while left is less than right
+        while (left < right) {
+            // if s char at left is not equal to s char at right
+            if (s.charAt(left) != s.charAt(right)) {
+                // return 2
+                return 2;
+            }
+            // increase left by 1
+            left++;
+            // decrease right by 1
+            right--;
+        }
+
+        // return 1
+        return 1;
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        String s = "ababa";
+        System.out.println(removePalindromicSubsequences(s));
+    }
 }
