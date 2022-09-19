@@ -48,9 +48,38 @@ public class SumOfUniqueElements {
     }
 
 
+    // Time: O(n)
+    // sum of unique elements using array
+    public static int sumOfUniqueElementsArray (int[] nums) {
+        // init sum to 0
+        int sum = 0;
+        // init freqArray to size 101
+        int[] freqArray = new int[101];
+
+        // for each num in nums
+        for (int num : nums) {
+            // increase freqArray at num by 1
+            freqArray[num]++;
+        }
+        
+        // for each num in nums
+        for (int num : nums) {
+            // if freqArray at num equal 1
+            if (freqArray[num] == 1) {
+                // increase sum by num
+                sum += num;
+            }
+        }
+
+        // return sum
+        return sum;
+    }
+
+
+
     // main
     public static void main(String[] args) {
         int [] nums = {1,2,3,2};
-        System.out.println(sumOfUniqueElementsMap(nums));
+        System.out.println(sumOfUniqueElementsArray(nums));
     }
 }
