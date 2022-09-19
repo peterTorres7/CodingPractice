@@ -50,9 +50,31 @@ public class NRepeatedElementInSize2NArray {
     }
 
 
+    // Time: O(n)
+    // N Repeated element in size 2N array using array
+    public static int nRepeatedElementInSize2NArrayArray (int[] nums) {
+        // init freqArray to size 10001
+        int[] freqArray = new int[10001];
+
+        // for each num in nums
+        for (int num : nums) {
+            // increase freqArray at num by 1
+            freqArray[num]++;    
+            // if freqArray at num > 1
+            if (freqArray[num] > 1) {
+                // return num
+                return num;
+            }
+        }
+
+        // return -1
+        return -1;
+    }
+
+
     // main
     public static void main(String[] args) {
         int[] nums = {1,2,3,3};
-        System.out.println(nRepeatedElementInSize2NArrayMap(nums));
+        System.out.println(nRepeatedElementInSize2NArrayArray(nums));
     }
 }
