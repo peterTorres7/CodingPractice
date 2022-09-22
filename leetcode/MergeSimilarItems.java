@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.List;
+
 /**
 
     You are given two 2D integer arrays, items1 and items2, representing two sets of items. 
@@ -24,5 +26,7 @@ public class MergeSimilarItems {
  
     // Time: O(n)
     // merge similar items using map
-    
+    public static List<List<Integer>> mergeSimilarItems (int[][] items1, int[][] items2) {
+        
+    }
 }
