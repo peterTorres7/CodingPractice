@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -30,7 +29,7 @@ public class MergeSimilarItems {
  
     // Time: O(n)
     // merge similar items using map
-    public static List<List<Integer>> mergeSimilarItems (int[][] items1, int[][] items2) {
+    public static List<List<Integer>> mergeSimilarItemsMap (int[][] items1, int[][] items2) {
         // init list of list of integer
         List<List<Integer>> list = new ArrayList<>();
         // init map of integer, integer
@@ -59,10 +58,45 @@ public class MergeSimilarItems {
     }
 
 
+    // Time: O(n)
+    // merge similar items using array
+    public static List<List<Integer>> mergeSimilarItemsArray (int[][] items1, int[][] items2) {
+        // init list of list of integer
+        List<List<Integer>> list = new ArrayList<>();
+        // init freqArray of size 1001
+        int[] freqArray = new int[1001];
+
+        // for each items in items1
+        for (int[] items : items1) {
+            // increase freqArray at items at 0 by items at 1
+            freqArray[items[0]] += items[1];
+        }
+
+        // for each items in items2
+        for (int[] items : items2) {
+            // increase freqArray at items at 0 by items at 1
+            freqArray[items[0]] += items[1];
+        }
+
+        // for each num i in freqArray
+        for (int i = 0; i < freqArray.length; i++) {
+            // if freqArray at i is not equal to 0
+            if (freqArray[i] != 0) {
+                // to list add new arrayList list of i, freqArray at i
+                list.add(new ArrayList<>(List.of(i, freqArray[i])));
+            }
+        }
+
+        // return list
+        return list;
+    }
+
+
+
     // main
     public static void main(String[] args) {
         int[][] items1 = {{1,1},{3,2},{2,3}};
         int[][] items2 = {{2,1},{3,2},{1,3}};
-        System.out.println(mergeSimilarItems(items1, items2));
+        System.out.println(mergeSimilarItemsArray(items1, items2));
     }
 }
