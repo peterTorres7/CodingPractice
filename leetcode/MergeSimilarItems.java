@@ -1,6 +1,10 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
 
@@ -27,6 +31,38 @@ public class MergeSimilarItems {
     // Time: O(n)
     // merge similar items using map
     public static List<List<Integer>> mergeSimilarItems (int[][] items1, int[][] items2) {
+        // init list of list of integer
+        List<List<Integer>> list = new ArrayList<>();
+        // init map of integer, integer
+        Map<Integer, Integer> map = new TreeMap<>();
         
+        // for each items in items1
+        for (int[] items : items1) {
+            // in map put items at 0, map or get default items at 0, 0 plus items at 1
+            map.put(items[0], map.getOrDefault(items[0], 0) + items[1]);
+        }
+
+        // for each items in items2
+        for (int[] items : items2) {
+            // in map put items at 0, map or get default items at 0, 0 plus items at 1
+            map.put(items[0], map.getOrDefault(items[0], 0) + items[1]);
+        }
+
+        // for each item in map key set
+        for (int key : map.keySet()) {
+            // to list add new arraylist of key, map get key
+            list.add(new ArrayList<>(List.of(key, map.get(key))));
+        }
+        
+        // return list
+        return list;
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        int[][] items1 = {{1,1},{3,2},{2,3}};
+        int[][] items2 = {{2,1},{3,2},{1,3}};
+        System.out.println(mergeSimilarItems(items1, items2));
     }
 }
