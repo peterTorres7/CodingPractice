@@ -36,14 +36,30 @@ public class DivideArrayIntoEqualPairs {
         int pairs = 0;
 
         // for each num in nums
-        // in map put num, map get or default num, 0 plus 1
+        for (int num : nums) {
+            // in map put num, map get or default num, 0 plus 1
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
 
-        // for each key in key set
-        // if map get key modulo 2 is not equal to 0
-        // return false
-        // to pairs add map get key divided by 2
+        // for each key in map key set
+        for (int key : map.keySet()) {
+            // if map get key modulo 2 is not equal to 0
+            if (map.get(key) % 2 != 0) {
+                // return false
+                return false;
+            }
+            // to pairs add map get key divided by 2
+            pairs += map.get(key) / 2;
+        }
 
         // return if nums length divided by 2 is equal to pairs
         return nums.length / 2 == pairs;
+    }
+
+
+    // main 
+    public static void main(String[] args) {
+        int[] nums = {3,2,3,2,2,2};
+        System.out.println(divideArrayIntoEqualPairs(nums));
     }
 }
