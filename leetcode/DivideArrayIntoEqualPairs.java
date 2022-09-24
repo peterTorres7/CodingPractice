@@ -29,7 +29,7 @@ public class DivideArrayIntoEqualPairs {
     
     // Time: O(n)
     // divided array into equal pairs using map
-    public static boolean divideArrayIntoEqualPairs (int[] nums) {
+    public static boolean divideArrayIntoEqualPairsMap (int[] nums) {
         // init map of integer, integer
         Map<Integer, Integer> map = new HashMap<>();
         // init pairs to 0
@@ -57,9 +57,40 @@ public class DivideArrayIntoEqualPairs {
     }
 
 
+    // Time: O(n)
+    // divide array into equal pairs using array
+    public static boolean divideArrayIntoEqualPairsArray (int[] nums) {
+        // init pairs to 0
+        int pairs = 0;
+        // init freqArray of size 501
+        int[] freqArray = new int[501];
+
+        // for each num in nums
+        for (int num : nums) {
+            // increase freqArray at num by 1
+            freqArray[num]++;
+        }
+
+        // for each num in freqArray
+        for (int num : freqArray) {
+            // if num modulo 2 is not equal to 0
+            if (num % 2 != 0) {
+                // return false
+                return false;
+            }
+            // increase pairs by freqArray at num divided by 2
+            pairs += num / 2;
+        }
+
+        // return if nums length divided by 2 equals pairs
+        return nums.length / 2 == pairs;
+    }
+
+
+
     // main 
     public static void main(String[] args) {
         int[] nums = {3,2,3,2,2,2};
-        System.out.println(divideArrayIntoEqualPairs(nums));
+        System.out.println(divideArrayIntoEqualPairsArray(nums));
     }
 }
