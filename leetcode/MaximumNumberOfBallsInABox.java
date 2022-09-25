@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
 
     You are working in a ball factory where you have n balls numbered from lowLimit up to highLimit inclusive 
@@ -28,5 +31,48 @@ public class MaximumNumberOfBallsInABox {
     
     // Time: O(n)
     // maximum number of balls in a box using map
-    
+    public static int maximumNumberOfBallsInABoxMap (int lowLimit, int highLimit) {
+        // init map of integer, integer
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        // for each num i from lowLimit to including highLimit
+        for (int i = lowLimit; i <= highLimit; i++) {
+            // init sum to 0
+            int sum = 0;
+            // init currentNum to i
+            int currentNum = i;
+            // while currentNum is greater than 0
+            while (currentNum > 0) {
+                // to sum add currentNum modulo 10
+                sum += currentNum % 10;
+                // set currentNum to currentNum divided by 10
+                currentNum /= 10;
+            }
+            // after while loop in map put sum, map get or default sum, 0 plus 1
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+        
+        // init max to 0
+        int max = 0;
+        // for each val in map values
+        for (int val : map.values()) {
+            // if val is greater than max
+            if (val > max) {
+                // set max to val
+                max = val;
+            }
+        }
+
+        // return max
+        return max;
+    }
+
+
+
+    // main 
+    public static void main(String[] args) {
+        int lowLimit = 1;
+        int highLimit = 10;
+        System.out.println(maximumNumberOfBallsInABoxMap(lowLimit, highLimit));
+    }
 }
