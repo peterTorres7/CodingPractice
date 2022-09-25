@@ -68,11 +68,50 @@ public class MaximumNumberOfBallsInABox {
     }
 
 
+    // Time: O(n)
+    // maximum number of balls in a box using array
+    public static int maximumNumberOfBallsInABoxArray (int lowLimit, int highLimit) {
+        // init freqArray of size 54
+        int[] freqArray = new int[54];
+
+        // for each num i lowLimit to including highLimit
+        for (int i = lowLimit; i <= highLimit; i++) {
+            // init sum to 0
+            int sum = 0;
+            // init currentNum to i
+            int currentNum = i;
+            // while currentNum is greater than 0
+            while (currentNum > 0) {
+                // to sum add currentNum modulo 10
+                sum += currentNum % 10;
+                // set currentNum to currentNum divided by 10
+                currentNum /= 10;
+            }
+            // after while loop increase freqArray at sum by 1
+            freqArray[sum]++;
+        }
+
+        // init max to 0
+        int max = 0;
+        // for each val in freqArray
+        for (int val : freqArray) {
+            // if val is greater than max
+            if (val > max) {
+                // set max to val
+                max = val;
+            }
+        }
+
+        // return max
+        return max;
+    }
+
+
 
     // main 
     public static void main(String[] args) {
         int lowLimit = 1;
         int highLimit = 10;
-        System.out.println(maximumNumberOfBallsInABoxMap(lowLimit, highLimit));
+        System.out.println(maximumNumberOfBallsInABoxArray(lowLimit, highLimit));
     }
 }
