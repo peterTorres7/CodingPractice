@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
 
     You are given an array of integers nums. 
@@ -22,7 +25,34 @@ package leetcode;
  */
 
 public class KeepMultiplyingFoundValuesByTwo {
+    
     // Time: O(n)
     // keep multiplying found values by two using array
-    
+    public static int keepMultiplyingFoundValuesByTwoSet (int[] nums, int original) {
+        // init set of integer
+        Set<Integer> set = new HashSet<>();
+        
+        // for each num in nums
+        for (int num : nums) {
+            // to set add num
+            set.add(num);
+        }
+
+        // while set contains original
+        while (set.contains(original)) {
+            // set original to original times 2
+            original *= 2;
+        }
+
+        // return original
+        return original;
+    }
+
+
+    // main
+    public static void main(String[] args) {
+        int[] nums = {5,3,6,1,12};
+        int original = 3;
+        System.out.println(keepMultiplyingFoundValuesByTwoSet(nums, original));
+    }
 }
