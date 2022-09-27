@@ -27,7 +27,7 @@ import java.util.Set;
 public class KeepMultiplyingFoundValuesByTwo {
     
     // Time: O(n)
-    // keep multiplying found values by two using array
+    // keep multiplying found values by two using set
     public static int keepMultiplyingFoundValuesByTwoSet (int[] nums, int original) {
         // init set of integer
         Set<Integer> set = new HashSet<>();
@@ -49,10 +49,35 @@ public class KeepMultiplyingFoundValuesByTwo {
     }
 
 
+    // Time: O(n)
+    // keep multiplying found values by two using brute force
+    public static int KeepMultiplyingFoundValuesByTwoBruteForce (int[] nums, int original) {
+        // init numsPointer to 0
+        int numsPointer = 0;
+        
+        // while numsPointer is less than nums length
+        while (numsPointer < nums.length) {
+            // if nums at numsPointer is equal to original
+            if (nums[numsPointer] == original) {
+                // set original to original times 2
+                original *= 2;
+                // set numsPointer to 0
+                numsPointer = 0;
+            }
+            // after if increase numsPointer by 1
+            numsPointer++;
+        }
+
+        // return original
+        return original;
+    }
+ 
+
+
     // main
     public static void main(String[] args) {
         int[] nums = {5,3,6,1,12};
         int original = 3;
-        System.out.println(keepMultiplyingFoundValuesByTwoSet(nums, original));
+        System.out.println(KeepMultiplyingFoundValuesByTwoBruteForce(nums, original));
     }
 }
