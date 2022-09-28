@@ -21,8 +21,8 @@ import java.util.Arrays;
 
 public class MakeTwoArraysEqualByReversingSubarrays {
     // Time: O(n logn)
-    // make two arrays equal by reversing subarrays
-    public static boolean makeTwoArraysEqualByReversingSubarrays (int[] target, int[] arr) {
+    // make two arrays equal by reversing subarrays using sort
+    public static boolean makeTwoArraysEqualByReversingSubarraysSort (int[] target, int[] arr) {
         // sort target
         Arrays.sort(target);
         // sort arr
@@ -42,7 +42,36 @@ public class MakeTwoArraysEqualByReversingSubarrays {
     }
 
 
-    
+    // Time: O(n)
+    // make two arrays equal by reversing subarrays using array
+    public static boolean makeTwoArraysEqualByReversingSubarraysArray (int[] target, int[] arr) {
+        // init freqArray of size 1001
+        int[] freqArray = new int[1001];
+
+        // for each num in target
+        for (int num : target) {
+            // increase freqArray at num by 1
+            freqArray[num]++;
+        }
+
+        // for each num in arr
+        for (int num : arr) {
+            // decrease freqArray at num by 1
+            freqArray[num]--;
+        }
+
+        // for each num in freqArray
+        for (int num : freqArray) {
+            // if num is not equal to 0
+            if (num != 0) {
+                // return false
+                return false;
+            }
+        }
+
+        // return true
+        return true;
+    }
 
 
 
@@ -50,6 +79,6 @@ public class MakeTwoArraysEqualByReversingSubarrays {
     public static void main(String[] args) {
         int[] target = {1,2,3,4}; 
         int[] arr = {2,4,1,3};
-        System.out.println(makeTwoArraysEqualByReversingSubarrays(target, arr));
+        System.out.println(makeTwoArraysEqualByReversingSubarraysArray(target, arr));
     }
 }
