@@ -23,7 +23,7 @@ import java.util.Set;
 public class MakeArrayZeroBySubtractingEqualAmounts {
     
     // Time: O(n)
-    // make array zero by subtracting equal amounts
+    // make array zero by subtracting equal amounts using set
     public static int makeArrayZeroBySubtractingEqualAmounts (int[] nums) {
         // init set of integer
         Set<Integer> set = new HashSet<>();
