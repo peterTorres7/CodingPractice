@@ -24,7 +24,23 @@ package leetcode;
 
 public class CheckDistancesBetweenSameLetters {
     
-    // Time: O()
+    // Time: O(n)
     // check distances between same letters
-    
+    public static boolean checkDistancesBetweenSameLetters (String s, int[] distance) {
+        // for each char in s to char array
+        for (char c : s.toCharArray()) {
+            // init first to s index of char
+            int first = s.indexOf(c);
+            // init last to s last index of char
+            int last = s.lastIndexOf(c);
+            // if distance at char minus - a is not equal to last minus first minus 1
+            if (distance[c - 'a'] != last - first - 1) {
+                // return false
+                return false;
+            }
+        }
+
+        // return true
+        return true;
+    }
 }
