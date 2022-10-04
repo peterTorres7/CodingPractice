@@ -20,7 +20,34 @@ package leetcode;
 
 public class FindTheHighestAltitude {
     
-    // Time: O()
+    // Time: O(n)
     // find the highest altitude
-    
+    public static int findTheHighestAltitude (int[] gain) {
+        // init ans to 0
+        int ans = 0;
+
+        // init currentAlt to 0
+        int currentAlt = 0;
+        // for each g in gain
+        for (int g : gain) {
+            // set currentAlt to currentAlt plus g
+            currentAlt += g;
+            // if currentAlt is greater than ans
+            if (currentAlt > ans) {
+                // set ans to currentAlt
+                ans = currentAlt;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[] gain = {-5,1,5,0,-7};
+        System.out.println(findTheHighestAltitude(gain));
+    }
 }
