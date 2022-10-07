@@ -21,7 +21,42 @@ package leetcode;
 
 public class MatrixDiagonalSum {
     
-    // Time: O()
-    // matrix diagonal sum
-    
+    // Time: O(n)
+    // matrix diagonal sum using two pointers
+    public static int matrixDiagonalSum (int[][] mat) {
+        // init ans to 0
+        int ans = 0;
+
+        // init left to 0
+        int left = 0;
+        // init right to mat length minus 1
+        int right = mat.length - 1;
+
+        // for each row in mat
+        for (int[] row : mat) {
+            // to ans add row at left plus row at right
+            ans += row[left] + row[right];
+            // increase left by 1
+            left++;
+            // decrease rigth by 1
+            right--;
+        }
+
+        // if mat length is odd
+        if (mat.length % 2 != 0) {
+            // set ans to ans minus middle
+            ans -= mat[mat.length / 2][mat.length / 2];
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[][] mat = {{1,2,3},{4,5,6},{7,8,9}};
+        System.out.println(matrixDiagonalSum(mat));
+    }
 }
