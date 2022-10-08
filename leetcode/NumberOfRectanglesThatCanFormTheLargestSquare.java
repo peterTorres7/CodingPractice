@@ -24,7 +24,40 @@ package leetcode;
 
 public class NumberOfRectanglesThatCanFormTheLargestSquare {
     
-    // Time: O()
+    // Time: O(n)
     // number of rectangles that can form the largest square
-    
+    public static int numberOfRectanglesThatCanFormTheLargestSquare (int[][] rectangles) {
+        // init ans to 0
+        int ans = 0;
+
+        // init max to 0
+        int max = 0;
+        // for each rectangle in rectangles
+        for (int[] rectangle : rectangles) {
+           // init square to math min of rectangle at 0, rectangle at 1
+            int square = Math.min(rectangle[0], rectangle[1]);
+           // set max to math max of max, square
+           max = Math.max(max, square);
+        }
+
+        // for each rectangle in rectangles
+        for (int[] rectangle : rectangles) {
+            // if math min of rectangle at 0, rectangle at 1 is greater than or equal to max
+            if (Math.min(rectangle[0], rectangle[1]) >= max) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[][] rectangles = {{5,8},{3,9},{5,12},{16,5}};
+        System.out.println(numberOfRectanglesThatCanFormTheLargestSquare(rectangles));
+    }
 }
