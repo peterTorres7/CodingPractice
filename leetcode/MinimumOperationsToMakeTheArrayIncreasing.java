@@ -26,7 +26,32 @@ package leetcode;
 
 public class MinimumOperationsToMakeTheArrayIncreasing {
     
-    // Time: O()
+    // Time: O(n)
     // minimum operations to make the array increasing
-    
+    public static int minimumOperationsToMakeTheArrayIncreasing (int[] nums) {
+        // init ans to 0
+        int ans = 0;
+
+        // for each num i in nums length minus 1
+        for (int i = 0; i < nums.length - 1; i++) {
+            // if nums at i plus 1 is less than or equal to nums at i
+            if (nums[i + 1] <= nums[i]) {
+                // to ans add nums at i minus nums at i plus 1 increased by 1
+                ans += nums[i] - nums[i + 1] + 1;
+                // set nums at i plus 1 to nums at i increased by 1
+                nums[i + 1] = nums[i] + 1;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[] nums = {1,1,1};
+        System.out.println(minimumOperationsToMakeTheArrayIncreasing(nums));       
+    }
 }
