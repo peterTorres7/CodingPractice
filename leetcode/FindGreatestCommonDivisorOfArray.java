@@ -53,10 +53,49 @@ public class FindGreatestCommonDivisorOfArray {
     }
 
 
+    // Time: O(n)
+    // find greatest common divisor of array using Euclid's algorithim
+    public static int findGreatestCommonDivisorOfArrayEuclid (int[] nums) {
+        // init min to Integer max value
+        int min = Integer.MAX_VALUE;
+        // init max to integer min value
+        int max = Integer.MIN_VALUE;
+
+        // for each num in nums
+        for (int num : nums) {
+            // if num is less min
+            if (num < min) {
+                // set min to num
+                min = num;
+            }
+            // if num is greater than max
+            if (num > max) {
+                // set max to num
+                max = num;
+            }
+        }
+
+        // return helper of max, min
+        return helper(max, min);
+    }
+
+    // helper method
+    public static int helper (int max, int min) {
+        // if min equal 0
+        if (min == 0) {
+            // return max
+            return max;
+        } else {
+            // else return gdc with min, max modulo min
+            return helper(min, max % min);
+        }
+    }
+
+
 
     // main
     public static void main(String[] args) {
         int[] nums = {2,5,6,9,10};
-        System.out.println(findGreatestCommonDivisorOfArrayBruteForce(nums));
+        System.out.println(findGreatestCommonDivisorOfArrayEuclid(nums));
     }
 }
