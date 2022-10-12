@@ -20,8 +20,8 @@ import java.util.Arrays;
 public class SortArrayByParity {
 
     // Time: O(n)
-    // sort array by parity using two pointers
-    public static int[] sortArrayByParity (int[] nums) {
+    // sort array by parity using two pointers and extra array
+    public static int[] sortArrayByParityExtra (int[] nums) {
         // init ans to new int of nums length
         int[] ans = new int[nums.length];
         // init left to 0
@@ -50,10 +50,17 @@ public class SortArrayByParity {
     }
 
 
+    // Time: O(n)
+    // sort array by parity in place using two pointers
+    public static int[] sortArrayByParityInPlace (int[] nums) {
+        // 
+    }
+
+
 
     // main
     public static void main(String[] args) {
         int[] nums = {3,1,2,4};
-        System.out.println(Arrays.toString(sortArrayByParity(nums)));
+        System.out.println(Arrays.toString(sortArrayByParityExtra(nums)));
     }
 }
