@@ -53,7 +53,37 @@ public class SortArrayByParity {
     // Time: O(n)
     // sort array by parity in place using two pointers
     public static int[] sortArrayByParityInPlace (int[] nums) {
-        // 
+        // init left to 0
+        int left = 0;
+        // init right to nums length minus 1
+        int right = nums.length - 1;
+
+        // while left is less than right
+        while (left < right) {
+            // if nums at left is odd AND nums at right is even
+            if (nums[left] % 2 == 1 & nums[right] % 2 == 0) {
+                // init temp to nums at left
+                int temp = nums[left]; 
+                // set nums at left to nums at right
+                nums[left] = nums[right];
+                // set nums at right to temp
+                nums[right] = temp;
+                // increase left by 1
+                left++;
+                // decrease right by 1
+                right--;
+            // else if nums at at left is even
+            } else if (nums[left] % 2 == 0) {
+                // increase left by one
+                left++;
+            } else {
+                // else decrease right by 1
+                right--;
+            }
+        }
+
+        // return nums
+        return nums;
     }
 
 
@@ -61,6 +91,6 @@ public class SortArrayByParity {
     // main
     public static void main(String[] args) {
         int[] nums = {3,1,2,4};
-        System.out.println(Arrays.toString(sortArrayByParityExtra(nums)));
+        System.out.println(Arrays.toString(sortArrayByParityInPlace(nums)));
     }
 }
