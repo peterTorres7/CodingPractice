@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
 
     A school is trying to take an annual photo of all the students. 
@@ -26,9 +28,41 @@ package leetcode;
 
 public class HeightChecker {
     
-    // Time: O()
+    // Time: O(nlogn)
     // height checker
     public static int heightChecker (int[] heights) {
-        
+        // init ans to 0
+        int ans = 0;
+        // init expected to heights length
+        int[] expected = new int[heights.length];
+
+        // for each height i in heights
+        for (int i = 0; i < heights.length; i++){
+            // set expected at i to heights at i
+            expected[i] = heights[i];
+        }
+
+        // sort expected
+        Arrays.sort(expected);
+
+        // for each height i in heights
+        for (int i = 0; i < heights.length; i++) {
+            // if heights at i is not equal to expected at i
+            if (heights[i] != expected[i]) {
+                // increase ans by 1
+                ans++;
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[] heights = {1,1,4,2,1,3};
+        System.out.println(heightChecker(heights));
     }
 }
