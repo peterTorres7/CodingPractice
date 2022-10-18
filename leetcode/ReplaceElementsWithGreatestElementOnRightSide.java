@@ -9,7 +9,6 @@ import java.util.Arrays;
 
     After doing so, return the array.
 
-    
 
     Example 1:
 
@@ -47,10 +46,34 @@ public class ReplaceElementsWithGreatestElementOnRightSide {
     }
 
 
+    // Time: O(n)
+    // replace elements with greatest element on right side starting at the end
+    public static int[] replaceElementsWithGreatestElementOnRightSideBackwards (int[] arr) {
+        // init max to 0
+        int max = 0;
+
+        // for each i in arr starting at end
+        for (int i = arr.length - 1; i >= 0; i--) {
+            // init currentNum to arr at i
+            int currentNum = arr[i];
+            // set arr at i to max
+            arr[i] = max;
+            // set max to max of max, currentNum
+            max = Math.max(max, currentNum);  
+        }
+        
+        // set arr at arr length minus 1 to -1
+        arr[arr.length - 1] = -1;
+
+        // return arr
+        return arr;
+    }
+
+
 
     // main
     public static void main(String[] args) {
         int[] arr = {17,18,5,4,6,1};
-        System.out.println(Arrays.toString(replaceElementsWithGreatestElementOnRightSide(arr)));
+        System.out.println(Arrays.toString(replaceElementsWithGreatestElementOnRightSideBackwards(arr)));
     }
 }
