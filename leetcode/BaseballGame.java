@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
 
     You are keeping the scores for a baseball game with strange rules. 
@@ -39,7 +42,50 @@ package leetcode;
 
 public class BaseballGame {
     
-    // Time: O()
-    // baseball game
-    
+    // Time: O(n)
+    // baseball game using array list
+    public static int baseballGame (String[] operations) {
+        // init sum to 0
+        int sum = 0;
+        // init scores to new arraylist
+        List<Integer> scores = new ArrayList<>();
+
+        // for each operation in operations
+        for (String operation : operations) {
+            // if operation equals "C"
+            if (operation.equals("C")) {
+                // to scores remove last score
+                scores.remove(scores.size() - 1);
+            // else if operation equals "D"
+            } else if (operation.equals("D")) {
+                // to scores add last score times 2
+                scores.add(scores.get(scores.size() - 1) * 2);
+            // else if operation equals "+"
+            } else if (operation.equals("+")) {
+                // to scores add last score plus second to last score 
+                scores.add(scores.get(scores.size() - 1) + scores.get(scores.size() - 2));
+            } else {
+                // else scores add integer value of operaion            
+                scores.add(Integer.valueOf(operation));
+            }
+        }
+        
+        // for each score in scores
+        for (int score : scores) {
+            // to sum add score
+            sum += score;
+        }
+
+        // return sum
+        return sum;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String[] operations = {"5","2","C","D","+"};
+        System.out.println(baseballGame(operations));
+    }
+
 }
