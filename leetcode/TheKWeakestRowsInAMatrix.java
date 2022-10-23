@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
 
     You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing civilians). 
@@ -29,7 +31,58 @@ package leetcode;
 
 public class TheKWeakestRowsInAMatrix {
     
-    // Time: O()
+    // Time: O(nlogn)
     // the k weakest rows in a matrix
-    
+    public static int[] theKWeakestRowsInAMatrix (int[][] mat, int k) {
+        // init ans to int array of size k
+        int[] ans = new int[k];
+        // init totals to new int array of mat length, 2
+        int[][] totals = new int[mat.length][2];
+
+        // for each i in mat
+        for (int i = 0; i < mat.length; i++) {
+            // init soldiers to 0
+            int soldiers = 0;
+            // for each num in mat i
+            for (int num : mat[i]) {
+                // if num is equal to 1
+                if (num == 1) {
+                    // increase soldiers by 1
+                    soldiers++;
+                } else {
+                    // else break  
+                    break;
+                }
+            }
+            // after inner for loop set totals at i to soldiers
+            totals[i][0] = i;
+            totals[i][1] = soldiers;            
+        }
+
+        // sort totals by soldiers
+        Arrays.sort(totals, (a,b) -> Integer.compare(a[1],b[1]));
+        
+        // for each i to k
+        for (int i = 0; i < k; i++) {
+            // set ans at i to totals at i,0
+            ans[i] = totals[i][0];
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[][] mat = {
+                    {1,1,0,0,0},
+                    {1,1,1,1,0},
+                    {1,0,0,0,0},
+                    {1,1,0,0,0},
+                    {1,1,1,1,1}};
+        int k = 3;
+        System.out.println(Arrays.toString(theKWeakestRowsInAMatrix(mat, k)));
+    }
 }
