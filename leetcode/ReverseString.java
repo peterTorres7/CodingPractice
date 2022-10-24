@@ -18,7 +18,7 @@ package leetcode;
 public class ReverseString {
     
     // Time: O(n)
-    // reverse string
+    // reverse string in place
     public static void reverseString (char[] s) {
         // init left to 0
         int left = 0;
