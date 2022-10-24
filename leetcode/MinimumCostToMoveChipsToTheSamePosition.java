@@ -23,6 +23,35 @@ package leetcode;
 
 public class MinimumCostToMoveChipsToTheSamePosition {
     
-    // Time: O()
+    // Time: O(n)
     // minimum cost to move chips to the same position
+    public static int minimumCostToMoveChipsToTheSamePosition (int[] position) {
+        // init even to 0
+        int even = 0;
+        // init odd to 0
+        int odd = 0;
+
+        // for each p in position
+        for (int p : position) {
+            // if p is even
+            if (p % 2 == 0) {
+                // increase even by 1
+                even++;
+            } else {
+                // else increase odd by 1
+                odd++;
+            }
+        }
+
+        // return min of even, odd
+        return Math.min(even, odd);
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[] position = {1, 2, 3};
+        System.out.println(minimumCostToMoveChipsToTheSamePosition(position));
+    }
 }
