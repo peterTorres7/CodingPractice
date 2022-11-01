@@ -1,6 +1,8 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
 
@@ -51,11 +53,41 @@ public class ValidAnagram {
     }
 
 
+    // Time: O(n)
+    // valid anagram using map
+    public static boolean validAnagramMap (String s, String t) {
+        // if s length is not equal to t length
+        if (s.length() != t.length()) {
+            // return false
+            return false;
+        }
+        
+        // init sMap
+        Map<Character, Integer> sMap = new HashMap<>();
+        // init tMap
+        Map<Character, Integer> tMap = new HashMap<>();
+
+        // for each char in s
+        for (char c : s.toCharArray()) {
+            // in sMap put char increased by 1
+            sMap.put(c, sMap.getOrDefault(c, 0) + 1);
+        }
+
+        // for each char in t
+        for (char c : t.toCharArray()) {
+            // in tMap put char increased by 1
+            tMap.put(c, tMap.getOrDefault(c, 0) + 1);
+        }
+
+        // return if sMap equals tMap
+        return sMap.equals(tMap);
+    }
+
 
     // main
     public static void main(String[] args) {
         String s = "anagram";
         String t = "nagaram";
-        System.out.println(validAnagramSort(s, t));
+        System.out.println(validAnagramMap(s, t));
     }
 }
