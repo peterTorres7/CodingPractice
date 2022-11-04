@@ -18,7 +18,31 @@ package leetcode;
 
 public class PercentageOfLetterInString {
     
-    // Time: O()
+    // Time: O(n)
     // percentage of letter in string
-    
+    public static int percentageOfLetterInString (String s, char letter) {
+        // init count to 0.0
+        double count = 0.0;
+
+        // for each char in s
+        for (char c : s.toCharArray()) {
+            // if char is equal to letter
+            if (c == letter) {
+                // increase count by 1
+                count++;
+            }
+        }
+
+        // return casting as int (count divided by s length times 100)
+        return (int)(count / s.length() * 100);
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String s = "foobar";
+        char letter = 'o';
+        System.out.println(percentageOfLetterInString(s, letter));
+    }
 }
