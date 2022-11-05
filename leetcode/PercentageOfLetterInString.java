@@ -21,8 +21,8 @@ public class PercentageOfLetterInString {
     // Time: O(n)
     // percentage of letter in string
     public static int percentageOfLetterInString (String s, char letter) {
-        // init count to 0.0
-        double count = 0.0;
+        // init count to 0
+        int count = 0;
 
         // for each char in s
         for (char c : s.toCharArray()) {
@@ -33,8 +33,8 @@ public class PercentageOfLetterInString {
             }
         }
 
-        // return casting as int (count divided by s length times 100)
-        return (int)(count / s.length() * 100);
+        // return count times 100 divided by s length
+        return count * 100 / s.length();
     }
 
 
