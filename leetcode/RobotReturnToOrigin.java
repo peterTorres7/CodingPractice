@@ -25,7 +25,43 @@ package leetcode;
 
 public class RobotReturnToOrigin {
     
-    // Time:O()
+    // Time:O(n)
     // robot return to origin
-    
+    public static boolean robotReturnToOrigin (String moves) {
+        // init leftRight to 0
+        int leftRight = 0;
+        // init upDown to 0
+        int upDown = 0;
+
+        // for each char in moves
+        for (char c : moves.toCharArray()) {
+            // if char is 'L'
+            if (c == 'L') {
+                // decrease leftRight by 1
+                leftRight--;
+            // else if char is 'R'      
+            } else if (c == 'R') {
+                // increase leftRight by 1
+                leftRight++;
+            // else if char is 'U'   
+            } else if (c == 'U') {
+                // increase upDown by 1
+                upDown++;
+            } else {
+                // else decrease upDown by 1
+                upDown--;
+            }
+        }
+
+        // return if leftRight equals 0 AND upDown equal 0
+        return leftRight == 0 && upDown == 0;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String moves = "UD";
+        System.out.println(robotReturnToOrigin(moves));
+    }
 }
