@@ -33,7 +33,52 @@ package leetcode;
 
 public class CheckIfWordEqualsSummationOfTwoWords {
 
-    // Time: O()
+    // Time: O(n)
     // check if word equals summation of two words
-    
+    public static boolean checkIfWordEqualsSummationOfTwoWords (String firstWord, String secondWord, String targetWord) {
+        // init stringbuilder sb1
+        StringBuilder sb1 = new StringBuilder();
+        // init stringbuilder sb2
+        StringBuilder sb2 = new StringBuilder();
+        // init stringbuilder sbTarget
+        StringBuilder sbTarget = new StringBuilder();
+
+        // for each char in firstWord
+        for (char c : firstWord.toCharArray()) {
+            // to sb1 append char minus 'a'
+            sb1.append(c - 'a');
+        }
+
+        // for each char in secondWord
+        for (char c : secondWord.toCharArray()) {
+            // to sb2 append char minus 'a'
+            sb2.append(c - 'a');
+        }
+        
+        // for each char in targetWord
+        for (char c : targetWord.toCharArray()) {
+            // to sbTarget append char minus 'a'
+            sbTarget.append(c - 'a');
+        }
+
+        // init firstNum to integer value of sb1 to string
+        int firstNum = Integer.valueOf(sb1.toString());
+        // init secondNum to integer value of sb2 to string
+        int secondNum = Integer.valueOf(sb2.toString());
+        // init targetNum to integer value of sbTarget to string
+        int targetNum = Integer.valueOf(sbTarget.toString());
+
+        // return if firstNum plus secondNum equals targetNum
+        return firstNum + secondNum == targetNum;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String firstWord = "acb";
+        String secondWord = "cba";
+        String targetWord = "cdb";
+        System.out.println(checkIfWordEqualsSummationOfTwoWords(firstWord, secondWord, targetWord));
+    }
 }
