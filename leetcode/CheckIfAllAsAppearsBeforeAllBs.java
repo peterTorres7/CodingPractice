@@ -18,7 +18,29 @@ package leetcode;
 
 public class CheckIfAllAsAppearsBeforeAllBs {
     
-    // Time: O()
+    // Time: O(n)
     // check if all a's appears before all b's
-    
+    public static boolean checkIfAllAsAppearsBeforeAllBs (String s) {
+        // init lastA
+        int lastA = s.lastIndexOf('a');
+        // init firstB
+        int firstB = s.indexOf('b');
+
+        // if firstA OR lastB is equal to -1
+        if (lastA == -1 || firstB == -1) {
+            // return true
+            return true;
+        }
+
+        // return if lastA is less than firstB
+        return lastA < firstB;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String s = "aaabbb";
+        System.out.println(checkIfAllAsAppearsBeforeAllBs(s));
+    }
 }
