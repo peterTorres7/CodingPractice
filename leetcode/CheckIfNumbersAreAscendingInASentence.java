@@ -28,7 +28,34 @@ package leetcode;
 
 public class CheckIfNumbersAreAscendingInASentence {
     
-    // Time: O()
+    // Time: O(n)
     // check if numbers are ascending in a sentence
-    
+    public static boolean checkIfNumbersAreAscendingInASentence (String s) {
+        // init prevNum to -1
+        int prevNum = -1;
+        // init words to s split by " "
+        String[] words = s.split(" ");
+
+        // for each word in words
+        for (String word : words) {
+            try {
+                int num = Integer.parseInt(word);
+                if (num <= prevNum) {
+                    return false;
+                }
+                prevNum = num;
+            } catch (Exception e) {}
+        }
+
+        // return true
+        return true;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String s = "1 box has 3 blue 4 red 6 green and 12 yellow marbles";
+        System.out.println(checkIfNumbersAreAscendingInASentence(s));
+    }
 }
