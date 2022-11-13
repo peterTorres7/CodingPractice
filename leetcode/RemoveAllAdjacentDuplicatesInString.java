@@ -25,6 +25,35 @@ package leetcode;
 
 public class RemoveAllAdjacentDuplicatesInString {
     
-    // Time: O()
+    // Time: O(n)
     // remove all adjacent duplicates in string
+    public static String removeAllAdjacenDuplicatesInString (String s) {
+        // init stringbuilder ans
+        StringBuilder ans = new StringBuilder();
+
+        // for each char in s
+        for (char c : s.toCharArray()) {
+            // init ansLength
+            int ansLength = ans.length();
+            // if ansLength is greater than 0 AND ans char at ansLength minus 1 is equal to char
+            if (ansLength > 0 && ans.charAt(ansLength - 1) == c) {
+                // from ans delete char at ansLength minus 1
+                ans.deleteCharAt(ansLength - 1);
+            } else {
+                // else to ans append char
+                ans.append(c);
+            }
+        }
+
+        // return ans to string
+        return ans.toString();
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String s = "abbaca";
+        System.out.println(removeAllAdjacenDuplicatesInString(s));
+    }
 }
