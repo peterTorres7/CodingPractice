@@ -30,7 +30,37 @@ package leetcode;
 
 public class MinimumTimeToTypeWordUsingSpecialTypewriter {
     
-    // Time: O()
+    // Time: O(n)
     // minimum time to type word using special typewriter
-    
+    public static int minimumTimeToTypeWordUsingSpecialTypewriter (String word) {
+        // init ans to 0
+        int ans = 0;
+        // init prev to 'a'
+        char prev = 'a';
+
+        // for each char in word
+        for (char c : word.toCharArray()) {
+            // init diff to math absolute of prev minus c
+            int diff = Math.abs(prev - c);
+            // init counterDiff to 26 minus diff
+            int counterDiff = 26 - diff;
+            // to ans add math min of diff, counterDiff
+            ans += Math.min(diff, counterDiff);
+            // increase ans by 1
+            ans++;
+            // set prev to char
+            prev = c;
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String word = "abc";
+        System.out.println(minimumTimeToTypeWordUsingSpecialTypewriter(word));
+    }
 }
