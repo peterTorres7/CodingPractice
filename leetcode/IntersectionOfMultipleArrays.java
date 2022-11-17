@@ -15,7 +15,7 @@ package leetcode;
 
 public class IntersectionOfMultipleArrays {
     
-    // Time: O()
+    // Time: O(nlogn)
     // intersection of multiple array
     
 }
