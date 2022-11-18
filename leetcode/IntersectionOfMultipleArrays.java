@@ -17,5 +17,8 @@ public class IntersectionOfMultipleArrays {
     
     // Time: O(nlogn)
     // intersection of multiple array
-    
+    public static List<Integer> intersectionOfMultipleArrays (int[][] nums) {
+        // init list
+        
+    }
 }
