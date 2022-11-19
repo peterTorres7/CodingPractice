@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class IntersectionOfMultipleArrays {
     
-    // Time: O(nlogn)
+    // Time: O(n^2)
     // intersection of multiple array
     public static List<Integer> intersectionOfMultipleArrays (int[][] nums) {
         // init list
