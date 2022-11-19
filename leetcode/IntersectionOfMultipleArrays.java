@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
 
     Given a 2D integer array nums where nums[i] is a non-empty array of distinct positive integers, 
@@ -19,6 +22,22 @@ public class IntersectionOfMultipleArrays {
     // intersection of multiple array
     public static List<Integer> intersectionOfMultipleArrays (int[][] nums) {
         // init list
-        
+        List<Integer> list = new ArrayList<>();
+        // init map
+        // init nums length
+
+        // for each num array in nums
+        // for each num in num array
+        // in put num and increase frequency by 1
+
+        // for each num in nums at 0
+        // if num is equal to map get num
+        // to list add num
+
+        // sort list
+
+        // return list
+        return list;
+
     }
 }
