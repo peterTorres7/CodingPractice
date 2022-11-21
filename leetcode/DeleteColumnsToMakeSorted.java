@@ -31,7 +31,35 @@ Columns 0 and 2 are sorted, but column 1 is not, so you only need to delete 1 co
 
 public class DeleteColumnsToMakeSorted {
 
-    // Time: O()
+    // Time: O(n*m)
     // delete columns to make sorted
-    
+    public static int deleteColumnsToMakeSorted (String[] strs) {
+        // init ans to 0
+        int ans = 0;
+
+        // for each char i in first string
+        for (int i = 0; i < strs[0].length(); i++) {
+            // for each str j in strs length minus 1
+            for (int j = 0; j < strs.length - 1; j++) {
+                // if strs at j char at i is greater than str at j plus 1 char at i
+                if (strs[j].charAt(i) > strs[j + 1].charAt(i)) {
+                    // increase ans by 1
+                    ans++;
+                    // break  
+                    break;
+                }
+            }
+        }
+
+        // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        String[] strs = {"cba","daf","ghi"};
+        System.out.println(deleteColumnsToMakeSorted(strs));
+    }
 }
