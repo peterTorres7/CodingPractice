@@ -29,5 +29,17 @@ public class NumberOfUnequalTripletsInArray {
     
     // Time: O()
     // number of unequal triplets in array
-    
+    public static int numberOfUnequalTripletsInArray (int[] nums) {
+        // init ans to 0
+        // init numsLength
+
+        // for each i in nums
+        // for each j set to i plus 1 in nums
+        // for each k set to j plus 1 in nums
+        // if nums at i is not equal to nums at j AND nums at i is not equal to nums at k
+        // AND nums at j is not equal to nums at k
+        // increase count by 1
+
+        // return ans
+    }
 }
