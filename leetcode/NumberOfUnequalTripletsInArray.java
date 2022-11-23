@@ -27,19 +27,39 @@ package leetcode;
 
 public class NumberOfUnequalTripletsInArray {
     
-    // Time: O()
+    // Time: O(n^3)
     // number of unequal triplets in array
     public static int numberOfUnequalTripletsInArray (int[] nums) {
         // init ans to 0
+        int ans = 0;
         // init numsLength
+        int numsLength = nums.length;
 
         // for each i in nums
-        // for each j set to i plus 1 in nums
-        // for each k set to j plus 1 in nums
-        // if nums at i is not equal to nums at j AND nums at i is not equal to nums at k
-        // AND nums at j is not equal to nums at k
-        // increase count by 1
+        for (int i = 0; i < numsLength; i++) {
+            // for each j set to i plus 1 in nums
+            for (int j = i + 1; j < numsLength; j++) {
+                // for each k set to j plus 1 in nums
+                for (int k = j + 1; k < numsLength; k++) {
+                    // if nums at i is not equal to nums at j AND nums at i is not equal to nums at k
+                    // AND nums at j is not equal to nums at k
+                    if (nums[i] != nums[j] && nums[i] != nums[k] && nums[j] != nums[k]) {
+                        // increase ans by 1
+                        ans++;
+                    }
+                }
+            }
+        }
 
         // return ans
+        return ans;
+    }
+
+
+
+    // main
+    public static void main(String[] args) {
+        int[] nums = {4,4,2,4,3};
+        System.out.println(numberOfUnequalTripletsInArray(nums));
     }
 }
