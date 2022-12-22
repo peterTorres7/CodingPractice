@@ -23,8 +23,7 @@ public class CheckIfTheSentenceIsPangram {
     // Time: O(n)
     // check if the senctence is pangram using map
     public static boolean checkIfTheSentenceIsPangramMap (String sentence) {
-        // init ans to true
-        boolean ans = true;
+
         // init map of Character, Boolean
         Map<Character, Boolean> map = new HashMap<>();
         
@@ -43,11 +42,11 @@ public class CheckIfTheSentenceIsPangram {
         // if map contains value false
         if (map.containsValue(false)) {
             // set ans to false
-            ans = false;
+            return false;
         }
 
-        // return ans
-        return ans;
+        // return true
+        return true;
     }
 
 
@@ -75,6 +74,6 @@ public class CheckIfTheSentenceIsPangram {
     // main
     public static void main(String[] args) {
         String sentence = "thequickbrownfoxjumpsoverthelazydog";
-        System.out.println(checkIfTheSentenceIsPangramIndexOf(sentence));
+        System.out.println(checkIfTheSentenceIsPangramMap(sentence));
     }
 }
