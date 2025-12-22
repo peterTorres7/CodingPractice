@@ -33,4 +33,5 @@ def mergeAlternately(word1: str, word2: str) -> str:
 
 print(mergeAlternately("abc", "pqr"))
 
-
+# space: O(n)
+# time: O(n)
