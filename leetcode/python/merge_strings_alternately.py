@@ -35,3 +35,4 @@ print(mergeAlternately("abc", "pqr"))
 
 # space: O(n)
 # time: O(n)
+# pattern: two pointers

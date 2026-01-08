@@ -38,4 +38,4 @@ print(canPlaceFlowers([1,0,0,0,1], 1))
 
 # space: O(1)
 # time: O(n)
-# greedy
+# pattern: greedy
