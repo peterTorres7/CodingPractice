@@ -1,62 +1,76 @@
-/**
- * This class performs a basic string compression using
- * the counts of repeated chacters.
- */
+// Given an array of characters chars, compress it using the following algorithm:
 
-public class StringCompression {                             
+// Begin with an empty string s. For each group of consecutive repeating characters in chars:
 
-    // Time: O(n^2)
-    // stringCompression using String as storage
-    public static String stringCompressionString (String str) {
-        // initialize compressedString to empty string
-        String compressedString = "";
-        // initialize charCount to 0
-        int charCount = 0;
-        // loop through str
-        for (int i = 0; i < str.length(); i++) {
-            // increase charCount by 1
-            charCount++;
-            // if i plus 1 is greater than or equal to str length OR str char at current index is not equal to str char at current index plus 1
-            if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1)) {
-            // to compressedString add str at current char
-            compressedString += str.charAt(i);
-            // to compressedString add charCount
-            compressedString += charCount;
-            // reset charcount to 0  
-            charCount = 0;          
+//     If the group's length is 1, append the character to s.
+//     Otherwise, append the character followed by the group's length.
+
+// The compressed string s should not be returned separately, but instead, 
+// be stored in the input character array chars. 
+// Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+
+// After you are done modifying the input array, return the new length of the array.
+
+// You must write an algorithm that uses only constant extra space.
+
+// Note: The characters in the array beyond the returned length do not matter and should be ignored.
+
+
+// Example 1:
+
+// Input: chars = ["a","a","b","b","c","c","c"]
+// Output: Return 6, and the first 6 characters of the input array should be: ["a","2","b","2","c","3"]
+
+public class StringCompression {
+    public static int stringCompression(char[] chars) {
+        // init read
+        int read = 0;
+        // init write
+        int write = 0;
+
+        // while read is less than chars length
+        while (read < chars.length) {
+            // init current char to chars at read
+            char currentChar = chars[read];
+            // init counter to 0
+            int counter = 0;
+
+            // while read is less than chars length and chars at read is equal to current char
+            while (read < chars.length && chars[read] == currentChar) {
+                // increase counter by 1
+                counter++;
+                // increase read by 1
+                read++;         
+            }
+
+            
+            // set chars at write to current char
+            chars[write] = currentChar;
+            // increase write by 1
+            write++;
+
+            // if counter is greater than 1
+            if (counter > 1) {
+                // for ch in string value of counter as char array
+                for (char ch : String.valueOf(counter).toCharArray()) {
+                    // set chars at write to ch
+                    chars[write] = ch;
+                    // increase write by one  
+                    write++;                       
+                }
             }
         }
-        // return smallest between str length and compressedString length
-        return compressedString.length() < str.length() ? compressedString : str;
-    }
-                  
-    // Time: O(n)
-    // string compression using StringBuilder as storage
-    public static String stringCompressionStringBuilder(String str) {
-        // initialize compressedString as new StringBuilder
-        StringBuilder compressedString = new StringBuilder();
-        // initialize charCount to 0
-        int charCount = 0;
-        // loop through str
-        for (int i = 0; i < str. length(); i++) {
-            // increase charCount by 1
-            charCount++;
-            // if i + 1 is greater than or equal to str lenght OR str char at current index is not equal to str char at current index plus 1
-            if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1)) {
-                // to compressedString add str char at current index
-                compressedString.append(str.charAt(i));
-                // to compressedString add charCount
-                compressedString.append(charCount);
-                // reset charCount to 0 
-                charCount = 0;
-            }
-        }
-        // return shortest string between str and compressedString
-        return compressedString.length() < str.length() ? compressedString.toString() : str;
+
+        // return write
+        return write;
     }
 
-    // main method
+    // main
     public static void main(String[] args) {
-        System.out.println(stringCompressionStringBuilder("aabcccccaaa"));
+        char[] chars = {'a','a','b','b','c','c','c'};
+        System.out.println(stringCompression(chars));
     }
+
+    // time: O(n)
+    // space: O(1)
 }
