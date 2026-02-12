@@ -1,96 +1,60 @@
-package leetcode;
-
 import java.util.Arrays;
 
-/**
+// Given an integer array nums, 
+// move all the even integers at the beginning of the array followed by all the odd integers.
 
-    Given an integer array nums, 
-    move all the even integers at the beginning of the array followed by all the odd integers.
+// Return any array that satisfies this condition.
+ 
 
-    Return any array that satisfies this condition.
-    
+// Example 1:
 
-    Example 1:
-
-    Input: nums = [3,1,2,4]
-    Output: [2,4,3,1]
-
- */
+// Input: nums = [3,1,2,4]
+// Output: [2,4,3,1]
 
 public class SortArrayByParity {
+    public static int[] sortArrayByParity(int[] nums) {
+        // init left read
+        int leftRead = 0;
+        // init right read
+        int rightRead = nums.length - 1;
 
-    // Time: O(n)
-    // sort array by parity using two pointers and extra array
-    public static int[] sortArrayByParityExtra (int[] nums) {
-        // init ans to new int of nums length
-        int[] ans = new int[nums.length];
-        // init left to 0
-        int left = 0;
-        // init right to ans length minus 1
-        int right = ans.length - 1;
-
-        // for each num in nums
-        for (int num : nums) {
-            // if num is even
-            if (num % 2 == 0) {
-                // set ans at left to num
-                ans[left] = num;
-                // increase left by 1
-                left++;
-            } else {
-                // else set ans at right to num
-                ans[right] = num;
-                // decrease right by 1
-                right--;
+        // while left read is less than right read
+        while (leftRead < rightRead) {
+            // if nums at left read is odd and nums at right read is even
+            if (nums[leftRead] % 2 != 0 && nums[rightRead] % 2 == 0) {
+                // set temp to nums at left read
+                int temp = nums[leftRead];
+                // set nums at left read to nums at right read
+                nums[leftRead] = nums[rightRead];
+                // set nums at right read to temp
+                nums[rightRead] = temp;
+                // increase left read by 1
+                leftRead++;
+                // decrease right read by 1            
+                rightRead--;    
+            }
+            // else if nums at left read is even
+            else if (nums[leftRead] % 2 == 0) {
+                // increase left read by 1
+                leftRead++;
+            }
+            // else 
+            else {
+                // decrease right read by 1            
+                rightRead--;
             }
         }
-
-        // return ans
-        return ans;
-    }
-
-
-    // Time: O(n)
-    // sort array by parity in place using two pointers
-    public static int[] sortArrayByParityInPlace (int[] nums) {
-        // init left to 0
-        int left = 0;
-        // init right to nums length minus 1
-        int right = nums.length - 1;
-
-        // while left is less than right
-        while (left < right) {
-            // if nums at left is odd AND nums at right is even
-            if (nums[left] % 2 == 1 & nums[right] % 2 == 0) {
-                // init temp to nums at left
-                int temp = nums[left]; 
-                // set nums at left to nums at right
-                nums[left] = nums[right];
-                // set nums at right to temp
-                nums[right] = temp;
-                // increase left by 1
-                left++;
-                // decrease right by 1
-                right--;
-            // else if nums at at left is even
-            } else if (nums[left] % 2 == 0) {
-                // increase left by one
-                left++;
-            } else {
-                // else decrease right by 1
-                right--;
-            }
-        }
-
+        
         // return nums
         return nums;
     }
 
-
-
-    // main
+    //main
     public static void main(String[] args) {
-        int[] nums = {3,1,2,4};
-        System.out.println(Arrays.toString(sortArrayByParityInPlace(nums)));
+        int[] nums = {3, 1, 2, 4};
+        System.out.print(Arrays.toString(sortArrayByParity(nums)));
     }
 }
+
+// time: O(n)
+// space: O(1)
