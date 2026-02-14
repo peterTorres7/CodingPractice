@@ -39,3 +39,6 @@ def sortArrayByParity(nums: list[int]) -> list[int]:
 
 nums = [3,1,2,4]
 print(sortArrayByParity(nums))
+
+# time: O(n)
+# space: O(1)
