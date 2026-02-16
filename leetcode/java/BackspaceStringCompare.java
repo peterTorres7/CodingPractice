@@ -1,69 +1,68 @@
-package leetcode;
-
 import java.util.Stack;
 
-/**
+// Given two strings s and t, return true if they are equal when both are typed into empty text editors. 
+// '#' means a backspace character.
 
-    Given two strings s and t, return true if they are equal when both are typed into empty text editors. 
-    '#' means a backspace character.
+// Note that after backspacing an empty text, the text will continue empty.
+ 
 
-    Note that after backspacing an empty text, the text will continue empty.
+// Example 1:
 
-
-    Example 1:
-
-    Input: s = "ab#c", t = "ad#c"
-    Output: true
-    Explanation: Both s and t become "ac".
-
- */
+// Input: s = "ab#c", t = "ad#c"
+// Output: true
 
 public class BackspaceStringCompare {
-    
-    // Time: O(n)
-    // backspace string compare using stacks
-    public static boolean backspaceStringCompare (String s, String t) {
-        // init sStack
-        Stack<Character> sStack = new Stack<>();
-        // init tStack
-        Stack<Character> tStack = new Stack<>();
-
-        // for each char in s
-        for (char c : s.toCharArray()) {
-            // if char is not equal to '#'
-            if (c != '#') {
-                // to sStack push char
-                sStack.push(c);
-            // else if sStack is not empty
-            } else if (!sStack.isEmpty()) {
-                // from sStack pop last char
-                sStack.pop();
+    public static boolean backspaceStringCompare(String s, String t) {
+            // init stacks
+            Stack<Character> sStack = new Stack<>();
+            Stack<Character> tStack = new Stack<>();
+            
+            // for letter in s to char array
+            for (char letter : s.toCharArray()) {
+                // if letter is equal to '#'
+                if (letter == '#') {
+                    // if s stack is not empty
+                    if (!sStack.isEmpty()) {
+                        // pop                    
+                        sStack.pop();
+                    }
+                }
+                // else
+                else {
+                    // to s stack push letter                
+                    sStack.push(letter);
+                }
             }
-        }
-
-        // for each char in t
-        for (char c : t.toCharArray()) {
-            // if char is not equal to '#'
-            if (c != '#') {
-                // to tStack push char
-                tStack.push(c);
-            // else if tStack is not empty  
-            } else if (!tStack.isEmpty()) {
-                // from tStack pop last char
-                tStack.pop();
+            
+            // for letter in t to char array
+            for (char letter : t.toCharArray()) {
+                // if letter is equal to '#'
+                if (letter == '#') {
+                    // if t stack is not empty
+                    if (!tStack.isEmpty()) {
+                        // pop                    
+                        tStack.pop();
+                    }
+                }
+                // else
+                else {
+                    // to t stack push letter                
+                    tStack.push(letter);
+                }
             }
-        }
 
-        // return if sStack equals tStack
-        return sStack.equals(tStack);
+            // return if s stack equals t stack
+            return sStack.equals(tStack);
     }
-
-
 
     // main
     public static void main(String[] args) {
         String s = "ab#c";
         String t = "ad#c";
+
         System.out.println(backspaceStringCompare(s, t));
     }
 }
+
+// time: O(n)
+// space: O(n)
